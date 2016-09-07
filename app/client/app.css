@@ -2,7 +2,22 @@
   font-size: 24px;
 }
 
-.logo{
+.viz-logo{
   margin-left: 40px;
   margin-top: 12px;
+  float: right;
+}
+
+.nav-pills> li.active> a, .nav-pills> li.active> a:focus {
+    color: black;
+    background-color: #dddddd;
+}
+
+.nav-pills> li.active> a:hover {
+    background-color: #efcb00;
+    color: black;
+}
+
+* {
+  border-radius: 0 !important;
 }
