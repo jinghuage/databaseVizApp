@@ -18,4 +18,12 @@ Git Repo:
   - git: https://github.com/jinghuage/gp41_genbank_sample.git
   - branch: step-0 for empty project structure
 
+
+Sep 8, 2016 log:
+-----------------
+
+Use AngularJS for a locally routed app:
+
+  - view #1: Basic header and footer, and show list of databases, for each database, provide link to their visualization page, which is view #2 routed by AngularRoute. Contains a side bar for search, and a main body for list view.
+  - view #2: visualization page for a database, pull viz from tableau public. Has a navbar which can navigate through available views. Contains side bar for tools, and main body for viz view.
   

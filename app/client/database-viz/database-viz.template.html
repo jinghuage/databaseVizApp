@@ -1,0 +1,54 @@
+<div class="viz-header text-center">
+  <h3> {{$ctrl.vizbook.dbname}} Database Visualization </h3>
+</div>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li ng-repeat="dashboard in $ctrl.vizbook.dashboard" id={{dashboard.name}} ng-click="$ctrl.changeView(dashboard)">
+        <a href="">{{dashboard.name}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+  <p class='viz-desc' id="desc"></p>
+
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+      <h5><i class="glyphicon glyphicon-home"></i>
+            <small><b>MANAGEMENT</b></small>
+      </h5>
+      <ul id='vizmenu' class='nav nav-pills nav-stacked'>
+        <li ng-repeat="mg in $ctrl.management">
+          <a href="#">{{mg}}</a>
+        </li>
+      </ul>
+      <h5><i class="glyphicon glyphicon-user"></i>
+            <small><b>UTILITY</b></small>
+      </h5>
+      <ul id='utilmenu' class='nav nav-pills nav-stacked'>
+        <li ng-repeat="exp in $ctrl.exportType">
+          <a href="#">{{exp}}</a>
+        </li>
+      </ul>
+      <h5><i class="glyphicon glyphicon-info-sign"></i>
+            <small><b>MARKERS</b></small>
+      </h5>
+      <ul id='infobox' class='nav nav-pills nav-stacked'>
+        <li ng-repeat="marker in $ctrl.selectMarker">
+          <a href="#">{{marker}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-10">
+      <!--Body content-->
+      <div id='viz'></div>
+    </div>
+
+  </div>
+</div>

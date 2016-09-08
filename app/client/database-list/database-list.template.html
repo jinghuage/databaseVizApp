@@ -1,0 +1,44 @@
+
+<div class="jumbotron text-center">
+  <h1>Bioinformatics Database Visualization</h1>
+  <p>Visually explore databases with Tableau software</p>
+</div>
+
+<div id="myPage" class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+
+      <p>
+        Search:
+        <input ng-model="$ctrl.query" />
+      </p>
+
+      <p>
+        Sort by:
+        <select ng-model="$ctrl.orderProp">
+          <option value="name">Alphabetical</option>
+          <option value="age">Newest</option>
+        </select>
+      </p>
+
+    </div>
+    <div class="col-md-10">
+      <!--Body content-->
+
+      <ul class="database">
+        <li ng-repeat="database in $ctrl.databases | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="thumbnail">
+          <a href="#!/database/{{database.id}}">{{database.name}}</a>
+          <p>{{database.snippet}}</p>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+</footer>

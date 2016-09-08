@@ -1,11 +1,6 @@
 .viz-desc{
   font-size: 24px;
-}
-
-.viz-logo{
-  margin-left: 40px;
-  margin-top: 12px;
-  float: right;
+  padding: 10px;
 }
 
 .nav-pills> li.active> a, .nav-pills> li.active> a:focus {
@@ -20,4 +15,57 @@
 
 * {
   border-radius: 0 !important;
+}
+
+.viz-header{
+  background-color: #00005e;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.jumbotron {
+    background-color: #00005e; /* dark blue */
+    color: #ffffff;
+    padding: 20px;
+    font-family: Montserrat, sans-serif;
+}
+.navbar {
+    margin-bottom: 0;
+    background-color: #777777;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #00005e !important;
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #00005e;
+}
+/* View: database list */
+.database {
+  list-style: none;
+}
+
+.database li {
+  clear: both;
+  height: 115px;
+  padding-top: 15px;
 }
