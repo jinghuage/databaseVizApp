@@ -43,7 +43,8 @@ angular.
               $("#"+dashboard.name).addClass('active');
             }
           }
-          self.viz = new tableauSoftware.Viz(vizDiv, vizURL, options);
+          //comment out for layout debug only
+          //self.viz = new tableauSoftware.Viz(vizDiv, vizURL, options);
         };
 
 
