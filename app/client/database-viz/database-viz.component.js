@@ -7,55 +7,70 @@ angular.
     templateUrl: 'database-viz/database-viz.template.html',
     controller: ['$http', '$routeParams',
       function databaseVizController($http, $routeParams) {
+
+        console.log("databaseViz controller");
+
         var self = this;
 
         self.exportType = ["Image", "Data", "CrossTab", "PDF"];
-        self.management = ["clear selection", "refresh", "revert", "download workbook"];
-        self.selectMarker = ["none"];
+        self.management = ["Revert", "Refresh", "Download", "Share"];
+
 
         $http.get('database/' + $routeParams.databaseId + '.json').then(function(response) {
-          self.vizbook = response.data;
-          self.initViz();
-          //self.changeView(self.vizbook.dashboard[0].name);
+          self.vizBook = response.data;
+          console.log("get vizbook:", self.vizBook);
+
+          self.myViz.vizBook(self.vizBook);
+          self.myViz();
+
+          var s = self.vizBook.startwith;
+          self.selectNav = self.vizBook.dashboard[s];
         });
 
-        self.initViz = function(){
-          console.log("initViz");
+        self.applyNav = function(dashboard){
+          self.myViz.changeView(dashboard);
+          self.selectNav = dashboard;
+        }
 
-          var vizDiv = document.getElementById('viz');//$('#viz');
-          console.log(vizDiv, vizDiv.offsetWidth, vizDiv.offsetHeight);
+        self.applyManagment = function(mg){
+          self.myViz.management(mg);
+        }
 
-          var dashboard = self.vizbook.dashboard[0];
-          var vizURL = self.vizbook.url + dashboard.name;
-          var isPublic = true;
-          var options = {
-            height: "800px",
-            width: "1200px",
-            hideTabs: true,
-            hideToolbar: true,
-            onFirstInteractive: function() {
-              self.workbook = self.viz.getWorkbook();
-              self.activeSheet = self.workbook.getActiveSheet();
-              //listenToMarksSelection();
-              $("#desc").text(dashboard.desc);
-              //var navname = $("#"+dashboard.name);
-              //console.log(navname[0]);
-              $("#"+dashboard.name).addClass('active');
-            }
-          }
-          //comment out for layout debug only
-          //self.viz = new tableauSoftware.Viz(vizDiv, vizURL, options);
-        };
+        self.applyUtil = function(exp){
+          self.myViz.export(exp);
+        }
 
+        self.$onChanges = function (changes) {
+          console.log("onchanges:", changes);
+        }
 
-        self.changeView = function(dashboard){
-          console.log(dashboard.name);
-          self.workbook.activateSheetAsync(dashboard.name);
-          $("#desc").text(dashboard.desc);
+        self.$postLink = function(){
+          console.log("self.$postLink");
+
+          self.myViz = viz.tableauViz()
+            .width(800)
+            .height(1200)
+            .vizDiv(document.getElementById('viz'))
+            .markerSelectionDiv('infobox');
+
+          console.log("create property myViz");
+
+        }
+
+        self.setNavStyle = function(dashboard){
+          console.log("setNavStyle");
+
+          $(".viz-desc").text(dashboard.desc);
           $(".active").removeClass('active');
-      		$("#"+dashboard.name).addClass('active');
-        };
+          $("." + dashboard.name).addClass('active');
+        }
 
+        self.checkme = function(){
+          console.log("am checking");
+
+          self.setNavStyle(self.selectNav);
+          return 0;
+        }
       }
     ]
   });

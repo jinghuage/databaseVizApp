@@ -5,9 +5,10 @@
   "dashboard": [
     {"name": "DistRegion", "desc": "Records Distribution in Regions"},
     {"name": "selectSeqView", "desc": "Show Sequence by Position"},
-    {"name": "selectSeqStr", "desc": "Show Sequence as String"},
+    {"name": "selectSeq", "desc": "Show Sequence as String"},
     {"name": "Deviation", "desc": "Show Code Deviation by Position"}
   ],
+  "startwith": 2,
   "sheet": [
     {"name": "seqStat", "desc": "Code Statistic of all Samples"}
   ]

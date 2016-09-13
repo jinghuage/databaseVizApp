@@ -3,15 +3,6 @@
   padding: 10px;
 }
 
-.nav-pills> li.active> a, .nav-pills> li.active> a:focus {
-    color: black;
-    background-color: #dddddd;
-}
-
-.nav-pills> li.active> a:hover {
-    background-color: #efcb00;
-    color: black;
-}
 
 * {
   border-radius: 0 !important;
@@ -52,6 +43,40 @@
 .navbar-default .navbar-toggle {
     border-color: transparent;
     color: #fff !important;
+}
+
+/* make sidebar nav pills height smaller.
+use id to boost priority so no !important needed*/
+
+#viz-sidebar .nav-pills {
+    min-height: 20px;
+}
+
+#viz-sidebar .nav-pills li a{
+    padding-top:0px;
+    padding-bottom:4px;
+    height: 20px;
+}
+
+#infobox {
+  list-style: none;
+  padding-left: 12px;
+}
+
+#infobox li {
+    font-size: 11px;
+    word-wrap: break-word;
+}
+
+.info-header {
+  display: block;
+  padding: 3px 0px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #999999;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
 }
 
 footer .glyphicon {

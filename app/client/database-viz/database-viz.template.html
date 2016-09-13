@@ -6,49 +6,48 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li ng-repeat="dashboard in $ctrl.vizbook.dashboard" id={{dashboard.name}} ng-click="$ctrl.changeView(dashboard)">
-        <a href="">{{dashboard.name}}</a>
+      <li ng-repeat="dashboard in $ctrl.vizBook.dashboard" class={{dashboard.name}} ng-click="$ctrl.applyNav(dashboard)">
+        <a href="" data-toggle="tooltip" title={{dashboard.desc}}>{{dashboard.name}}</a>
       </li>
     </ul>
   </div>
 </nav>
 
 <div class="container-fluid">
-
-  <p class='viz-desc' id="desc">View description Goes here</p>
+  <!--Description of current Nav selected-->
+  <p class='viz-desc'>View description Goes here</p>
 
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-2" id="viz-sidebar">
       <!--Sidebar content-->
       <h5><i class="glyphicon glyphicon-home"></i>
-            <small><b>MANAGEMENT</b></small>
+            <small><b>WORKBOOK</b></small>
       </h5>
       <ul id='vizmenu' class='nav nav-pills nav-stacked'>
-        <li ng-repeat="mg in $ctrl.management">
-          <a href="#">{{mg}}</a>
+        <li ng-repeat="mg in $ctrl.management" ng-click="$ctrl.applyManagement(mg)">
+          <a href="">{{mg}}</a>
         </li>
       </ul>
       <h5><i class="glyphicon glyphicon-user"></i>
-            <small><b>UTILITY</b></small>
+            <small><b>EXPORT</b></small>
       </h5>
       <ul id='utilmenu' class='nav nav-pills nav-stacked'>
-        <li ng-repeat="exp in $ctrl.exportType">
-          <a href="#">{{exp}}</a>
+        <li ng-repeat="exp in $ctrl.exportType" ng-click="$ctrl.applyUtil(exp)">
+          <a href="">{{exp}}</a>
         </li>
       </ul>
       <h5><i class="glyphicon glyphicon-info-sign"></i>
-            <small><b>MARKERS</b></small>
+            <small><b>USER SELECTION</b></small>
       </h5>
-      <ul id='infobox' class='nav nav-pills nav-stacked'>
-        <li ng-repeat="marker in $ctrl.selectMarker">
-          <a href="#">{{marker}}</a>
-        </li>
+      <ul id='infobox'>
+        <li>None</li>
       </ul>
     </div>
 
     <div class="col-md-10">
       <!--Body content-->
       <div id='viz'></div>
+      <div ng-show="$ctrl.checkme()">Check if template is loaded</div>
     </div>
 
   </div>

@@ -4,5 +4,6 @@
 angular.module('databaseVizApp', [
   'ngRoute',
   'databaseList',
-  'databaseViz'
+  'databaseViz',
+  'core'
 ]);
