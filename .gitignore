@@ -1,3 +1,5 @@
 node_modules
 vendor
 app/client/d3charts
+app/client/aflviz-websocket
+app/client/ngviz-bokeh

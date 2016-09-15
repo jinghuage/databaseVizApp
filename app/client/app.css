@@ -94,3 +94,9 @@ footer .glyphicon {
   height: 115px;
   padding-top: 15px;
 }
+
+iframe {
+  margin: 0;
+  padding: 0;
+  border: none;
+}

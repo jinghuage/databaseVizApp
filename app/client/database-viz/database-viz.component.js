@@ -5,8 +5,8 @@ angular.
   module('databaseViz').
   component('databaseViz', {
     templateUrl: 'database-viz/database-viz.template.html',
-    controller: ['$http', '$routeParams',
-      function databaseVizController($http, $routeParams) {
+    controller: ['$http', '$routeParams', '$timeout',
+      function databaseVizController($http, $routeParams, $timeout) {
 
         console.log("databaseViz controller");
 
@@ -20,11 +20,23 @@ angular.
           self.vizBook = response.data;
           console.log("get vizbook:", self.vizBook);
 
-          self.myViz.vizBook(self.vizBook);
+          self.myViz = self.initViz(self.vizBook.vizapi);
+          self.myViz.vizBook(self.vizBook)
+            .width(800)
+            .height(1200)
+            .vizDiv('viz')
+            .markerSelectionDiv('infobox');
+
+          console.log("create property myViz", self.vizBook.dbname);
+
           self.myViz();
 
-          var s = self.vizBook.startwith;
-          self.selectNav = self.vizBook.dashboard[s];
+          var start = self.vizBook.startwith;
+          self.selectNav = self.vizBook.dashboard[start];
+
+          $timeout(function () {
+            self.setNavStyle(self.selectNav);
+          }, 10);
         });
 
         self.applyNav = function(dashboard){
@@ -44,16 +56,12 @@ angular.
           console.log("onchanges:", changes);
         }
 
-        self.$postLink = function(){
-          console.log("self.$postLink");
+        self.initViz = function(vizType){
+          console.log("initViz", vizType);
 
-          self.myViz = viz.tableauViz()
-            .width(800)
-            .height(1200)
-            .vizDiv(document.getElementById('viz'))
-            .markerSelectionDiv('infobox');
-
-          console.log("create property myViz");
+          if(vizType == 'tableau') return viz.tableauViz();
+          else if(vizType == 'd3') return viz.d3Viz();
+          else if(vizType == 'python') return viz.pythonViz();
 
         }
 
@@ -65,12 +73,6 @@ angular.
           $("." + dashboard.name).addClass('active');
         }
 
-        self.checkme = function(){
-          console.log("am checking");
-
-          self.setNavStyle(self.selectNav);
-          return 0;
-        }
       }
     ]
   });

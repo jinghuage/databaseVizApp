@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NFL Chart</title>
+
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/choropleth.css"/>
+<link type="text/css" rel="stylesheet" href="css/colorbrewer.css"/>
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
+<script type="text/javascript" src="nflChart.js"></script>
+
+</head>
+<style>
+.desc {
+  width: 800px;
+  margin: auto;
+  padding: 1.25rem;
+  background-color: #eee;
+  font-size: 14pt;
+}
+
+.desc p {
+  font-size: 14pt;
+}
+
+button{
+  font-size: 0.9rem;
+}
+
+#chart {
+  width: 800px;
+  margin: auto;
+  padding: 1.25rem;
+  background-color: #fff;
+}
+
+</style>
+
+<body>
+
+<div class="desc">
+  <p> Visualize A NFL Game </p>
+  <p> Data downloaded from https://github.com/stevehebert/football_data </p>
+
+  <label> Select a game: </label><br>
+  <!-- <input type="text" id="team1" value="NYG"> -->
+  <!-- <input type="text" id="team2" value="DAL"> -->
+  <label> Guest team: </label>
+  <select id="teamG"></select>
+  <label> Annotation: </label>
+  <select id="teamGlevel"></select>
+  <button id="teamGannotationOn">Annotation On</button>
+  <button id="teamGannotationOff">All Annotation Off</button>
+  <br>
+  <label> Home team: </label>
+  <select id="teamH"></select>
+  <label> Annotation: </label>
+  <select id="teamHlevel"></select>
+  <button id="teamHannotationOn">Annotation On</button>
+  <button id="teamHannotationOff">All Annotation Off</button>
+  <br>
+  <button id="plotgame">Plot Game</button>
+  <button id="animateplay">Animate Game Play</button>
+</div>
+<div id="chart"></div>
+
+<script type="text/javascript" src="nflApp.js"></script>
+
+</body>
+</html>

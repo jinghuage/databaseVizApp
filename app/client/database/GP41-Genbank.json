@@ -1,6 +1,7 @@
 {
   "id": "GP41-Genbank",
   "dbname": "ALL_GP41_FINAL_Genbank",
+  "vizapi": "tableau",
   "url": "https://public.tableau.com/views/sample_pivot_seq/",
   "dashboard": [
     {"name": "DistRegion", "desc": "Records Distribution in Regions"},

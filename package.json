@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start-node": "node app/server/server.js",
-    "start-http": "http-server ./app/client -a localhost -p 8000 -c-1",
+    "start-http": "http-server ./app/client -a localhost -p 8001 -c-1",
     "test-client": "mocha ./app/client/index.test.js",
     "test-server": "mocha ./app/server/server.test.js"
   },
