@@ -60,9 +60,7 @@ angular.
           console.log("initViz", vizType);
 
           if(vizType == 'tableau') return viz.tableauViz();
-          else if(vizType == 'd3') return viz.d3Viz();
-          else if(vizType == 'python') return viz.pythonViz();
-
+          else if(vizType == 'embed') return viz.embedViz();
         }
 
         self.setNavStyle = function(dashboard){

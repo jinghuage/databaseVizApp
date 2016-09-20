@@ -17,6 +17,14 @@
         "snippet": "Plot a game, with animation!"
     },
     {
+        "age": 4,
+        "id": "SimpleChat",
+        "name": "SimpleChat",
+        "category": "Websocket Test",
+        "source": "",
+        "snippet": "A simple chat test connected to python tornado server through websocket"
+    },
+    {
         "age": 2,
         "id": "AFL-2011-2014",
         "name": "afl_stats",

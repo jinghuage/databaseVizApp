@@ -1,10 +1,10 @@
-//module: viz.d3Viz -- load d3 viz to vizdiv placeholder
+//module: viz.embedViz -- load embed viz to vizdiv placeholder
 
 //namespace: viz (window.viz)
 var viz = viz || {};
 console.log("name space viz is:", viz);
 
-viz.d3Viz = function() {
+viz.embedViz = function() {
 
   var width, height;
   var files;
@@ -12,7 +12,7 @@ viz.d3Viz = function() {
 
   var myapp = function(){
 
-    console.log("init d3Viz");
+    console.log("init embedViz");
 
     //var vizDiv = document.getElementById('viz');//$('#viz');
     var vizDivDom = document.getElementById(vizDiv);

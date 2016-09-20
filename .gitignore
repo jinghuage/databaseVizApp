@@ -1,5 +1,10 @@
 node_modules
-vendor
-app/client/d3charts
-app/client/aflviz-websocket
-app/client/ngviz-bokeh
+app/client/vendor/bower_components
+app/server/test-db
+app/server/express/data/db
+*.pyc
+app/server/websocket-python/app_template/aflviz/*.pyc
+app/server/websocket-python/app_template/ngviz-bokeh/*.pyc
+app/server/websocket-python/app_template/*.pyc
+app/server/websocket-python/router/*.pyc
+app/server/websocket-python/*.pyc

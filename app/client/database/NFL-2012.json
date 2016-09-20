@@ -1,8 +1,8 @@
 {
   "id": "NFL-2012",
   "dbname": "2012_nfl_pbp_data",
-  "vizapi": "d3",
-  "url": "nfl/",
+  "vizapi": "embed",
+  "url": "embed/nfl/",
   "dashboard": [
     {"name": "nflChart", "desc": "Plot a game progression with animation"}
   ],

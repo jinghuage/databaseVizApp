@@ -12,6 +12,6 @@
     "bootstrap": "3.3.x",
     "jquery": "2.2.x",
     "tableau": "2.x",
-    "d3": "2.x"
+    "d3": "4.x"
   }
 }

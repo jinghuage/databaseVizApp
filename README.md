@@ -76,5 +76,13 @@ The development roadmap might be complex:
   - inject $timeout to database-viz controller, so can use $timeout() to set nav style after the templated has rendered. -- so far didn't find any event that will catch the template-rendered event. Before used a last div with ng-view set to be a checkme function, that worked as well, but iframe seems to break it -- may need further exploration.
 
 
+  Sep 20, 2016 log:
+  ------------------
+
+  git branch step-4
+
+  - client side : boil down to two types of viz api: tableauViz, and embedViz. the embedded viz apps can be standalone app (like d3 apps), or user interface app which connects to server side (e.g. websocket-python) for generated graph (aflviz) or just simple messaging response (chat)
+
+  - tidy up server side structure. websocket-python has server-tornado.py, app_template folder and router folder.
 
   
