@@ -85,4 +85,24 @@ The development roadmap might be complex:
 
   - tidy up server side structure. websocket-python has server-tornado.py, app_template folder and router folder.
 
-  
+    - The app_template folder hold server side viz code, use matplotlib+mpld3, or bokeh, to generate plots and output into html. Each viz app will have a "reqhandler.py" file, which define a "graph" function. The "graph" function accepts parameters (from message string loaded into json ), and call app submodules to generate graph, based on the parameters.
+
+    - The router folder accepts the request from client, and route the request to corresponding apps. After dynamically import app.reqhandler module, then the router's handler will be set to the "graph" function of the imported module.
+
+  Sep 21, 2016 log:
+  -----------------
+
+  git branch step-5
+
+  work on bokeh app
+
+  Comparison between bokeh and matplotlib+mpld3 apps:
+
+  - bokeh can have html widgets and interaction built in -- so does that mean bokeh transfer data combined with html/js, so once transferred to client, it became a standalone app and doesn't need more request back to server??? Unless you try to change datasource?? Is this true?-- Although it's probably not a very good structure to use here, that we have to isolate the datasource change use case out, which may just cause confusion. It's better to still use the client side user-interface, and server side plot generation architecture. 
+
+
+  - look at the html file bokeh created, it uses "https://cdn.pydata.org/bokeh/release/bokeh-0.11.1.min.js" script to render the data object generated from the plot. This is how mpld3 works as well. Note that this script is different from BokehJS -- which is a JS library like d3, allowing users to write plotting code in javascript directly.
+
+  - Now lets draw some analogy to tableau. the tableau embed uses 'https://public.tableau.com/javascripts/api/viz_v1.js' script to render the viz data object I Suppose? And the Tableau javascript API "http://public.tableau.com/javascripts/api/tableau-2.js" is different again. This one allows user to write javascript code to do the embedding, instead of insert embed html snippet directly. Furthermore, it returns a javascript object of the viz, and allows some interaction with the viz object. Note again this API is very limited, it won't let you create new viz elements, like d3 and bokehjs can. It merely provides some interaction within the current viz elements.
+
+  -

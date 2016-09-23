@@ -35,10 +35,10 @@
     {
         "age": 3,
         "id": "NG-10years",
-        "name": "ng_spot_ung",
+        "name": "ng_symbol_datafiles",
         "category": "Energy",
         "source": "Yahoo Finance",
-        "snippet": "Visualize U.S. natuaral gas spot price and UNG tick price of recent ten years."
+        "snippet": "Visualize U.S. natuaral gas data of recent ten years."
     },
     {
         "age": 4,

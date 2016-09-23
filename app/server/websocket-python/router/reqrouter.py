@@ -42,9 +42,9 @@ class reqRouter:
             'app': "app_template.aflviz.reqhandler"
         })
 
-        # self.add_router("ngviz", {
-        #     'app': "app_template.ngviz-bokeh"
-        # })
+        self.add_router("ngviz", {
+            'app': "app_template.ngviz-bokeh.reqhandler"
+        })
 
 
     def dispatch_async(self, request, callback):

@@ -8,3 +8,5 @@ app/server/websocket-python/app_template/ngviz-bokeh/*.pyc
 app/server/websocket-python/app_template/*.pyc
 app/server/websocket-python/router/*.pyc
 app/server/websocket-python/*.pyc
+app/server/websocket-python/app_template/stockchart
+app/client/embed/stockchart

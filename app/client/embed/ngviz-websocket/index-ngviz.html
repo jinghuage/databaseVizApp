@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AFL Stats</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/ngviz.css" />
+
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="js/Console.js"></script>
+    <script src="js/Figure.js"></script>
+    <script src="js/wshandler.js"></script>
+    <script src="js/WebSocketClient.js"></script>
+    <script src="js/ngviz.js"></script>
+
+  </head>
+<body>
+    <div id="content">
+
+
+
+
+        <div id="figcontrol">
+
+
+            <div id='symbols' class="ctrl">
+              <label>Check Symbols:</label>
+              <label class="checkbox-inline"><input type="checkbox" value="UNG" id="symbol1" checked="checked">UNG</label>
+              <label class="checkbox-inline"><input type="checkbox" value="UGAZ" id="symbol2">UGAZ</label>
+              <label class="checkbox-inline"><input type="checkbox" value="USO" id="symbol3" checked="checked">USO</label>
+            </div>
+
+            <div id='datafiles' class="ctrl">
+              <label>Check Data Files:</label>
+              <label class="checkbox-inline"><input type="checkbox" value="1" id="df1" checked="checked">Spot Price</label>
+              <label class="checkbox-inline"><input type="checkbox" value="2" id="df2">Storage</label>
+              <label class="checkbox-inline"><input type="checkbox" value="3" id="df3">Production</label>
+              <label class="checkbox-inline"><input type="checkbox" value="4" id="df4">Consumption</label>
+              <label class="checkbox-inline"><input type="checkbox" value="5" id="df5">Import</label>
+              <label class="checkbox-inline"><input type="checkbox" value="6" id="df6">Export</label>
+            </div>
+
+            <div class="col-xs-6 ctrl">
+              <label for="plotsymbols">Plot Symbol list:</label>
+              <input type="text" class="form-control" id="plotsymbols" placeholder="UNG*1.0, USO*1.0">
+            </div>
+
+            <div class="col-xs-6 ctrl">
+              <label for="plotfiles">Plot Data File List:</label>
+              <input class="form-control" id="plotfiles" type="text" placeholder="Spot Price*5.0,">
+            </div>
+
+
+            <div class="ctrl">
+                <label class="cmd">Pick Date Range: </label>
+                <input type="date" id="dailymin" min="2006-01-01" value="2014-09-01">
+                <input type="date" id="dailymax" max="2016-01-01" value="2015-12-01">
+                <button id="plot">Plot Selected </button>
+            </div>
+
+
+        </div>
+
+        <div class="text_io" id="console"></div>
+
+        <div id="figs"></div>
+
+    </div>
+    <!-- #content -->
+
+
+</body>
+
+</html>
