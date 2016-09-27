@@ -1,7 +1,7 @@
 // assets/js/wshandler.js
 
 /**
- *  This event handler responds to the WebSocketClient, customizing the actions we take 
+ *  This event handler responds to the WebSocketClient, customizing the actions we take
  *  when it issues events such as onOpen or onMessage.
  *
  *  We implement this separately so that we can perform layout-specific changes while
@@ -9,7 +9,7 @@
  */
 function WebSocketHandler(console, figure) {
 	this.con = console;
-        this.fig = figure;
+  this.fig = figure;
 }
 
 /**
@@ -21,8 +21,8 @@ WebSocketHandler.prototype.send = function(message) {
 }
 
 /**
- * upon connection, 
- *   - exchange the Connect button for a Disconnect button, 
+ * upon connection,
+ *   - exchange the Connect button for a Disconnect button,
  *   - allow user to send messages to the server,
  *   - notify user of the connection
  */
@@ -51,12 +51,12 @@ WebSocketHandler.prototype.onMessage = function(e) {
 
     if(conmsg.length>0) this.con.appendFromServer(conmsg);
     if(figmsg.length>0) this.fig.appendFromServer(figmsg);
-  
+
 };
 
 /**
- * upon connection, 
- *   - exchange the Connect button for a Disconnect button, 
+ * upon connection,
+ *   - exchange the Connect button for a Disconnect button,
  *   - allow user to send messages to the server,
  *   - notify user of the connection
  */

@@ -8,6 +8,24 @@
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
+    <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-0.11.1.min.css" type="text/css" />
+
+    <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-0.11.1.min.js"></script>
+    <script type="text/javascript">
+        Bokeh.set_log_level("info");
+    </script>
+
+    <!-- <link
+        href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.0.min.css"
+        rel="stylesheet" type="text/css">
+    <link
+        href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.0.min.css"
+        rel="stylesheet" type="text/css">
+
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.0.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.0.min.js"></script> -->
+
     <script src="js/Console.js"></script>
     <script src="js/Figure.js"></script>
     <script src="js/wshandler.js"></script>
@@ -33,22 +51,22 @@
 
             <div id='datafiles' class="ctrl">
               <label>Check Data Files:</label>
-              <label class="checkbox-inline"><input type="checkbox" value="1" id="df1" checked="checked">Spot Price</label>
-              <label class="checkbox-inline"><input type="checkbox" value="2" id="df2">Storage</label>
-              <label class="checkbox-inline"><input type="checkbox" value="3" id="df3">Production</label>
-              <label class="checkbox-inline"><input type="checkbox" value="4" id="df4">Consumption</label>
-              <label class="checkbox-inline"><input type="checkbox" value="5" id="df5">Import</label>
-              <label class="checkbox-inline"><input type="checkbox" value="6" id="df6">Export</label>
+              <label class="checkbox-inline"><input type="checkbox" value="HenryHub-spotprice" id="df1" checked="checked">HenryHub-spotprice</label>
+              <label class="checkbox-inline"><input type="checkbox" value="Storage" id="df2">Storage</label>
+              <label class="checkbox-inline"><input type="checkbox" value="Production" id="df3">Production</label>
+              <label class="checkbox-inline"><input type="checkbox" value="Consuption" id="df4">Consumption</label>
+              <label class="checkbox-inline"><input type="checkbox" value="Import" id="df5">Import</label>
+              <label class="checkbox-inline"><input type="checkbox" value="Export" id="df6">Export</label>
             </div>
 
             <div class="col-xs-6 ctrl">
               <label for="plotsymbols">Plot Symbol list:</label>
-              <input type="text" class="form-control" id="plotsymbols" placeholder="UNG*1.0, USO*1.0">
+              <input type="text" class="form-control" id="plotsymbols" value="UNG*1.0, USO*1.0">
             </div>
 
             <div class="col-xs-6 ctrl">
               <label for="plotfiles">Plot Data File List:</label>
-              <input class="form-control" id="plotfiles" type="text" placeholder="Spot Price*5.0,">
+              <input class="form-control" id="plotfiles" type="text" value="HenryHub-spotprice*5.0">
             </div>
 
 

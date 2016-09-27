@@ -1,8 +1,12 @@
 
 import numpy as np
 import pandas as pd
+from random import randint
 from bokeh.charts import Horizon
 from bokeh.plotting import figure, output_file, show
+from bokeh.embed import components
+from bokeh.palettes import brewer
+from bokeh.palettes import Spectral11
 from bokeh.models import CustomJS, ColumnDataSource, Slider
 from bokeh.models import HoverTool
 import pandas_datareader.data as web
@@ -54,6 +58,7 @@ class graph:
         self.timerange = []
         self.symbols = {}
         self.datafiles = {}
+        print "module graph initialized"
 
 
     def update_config(self, **kwargs):
@@ -73,12 +78,15 @@ class graph:
                 value = map(lambda x: datetime.datetime.today() if x =='today' else pd.to_datetime(x, infer_datetime_format=True), value)
                 self.timerange = value
                 print self.timerange
+
             elif key == 'symbols':
                 self.symbols = value
                 print self.symbols
+                self.get_data_by_symbol()
             elif key == 'datafiles':
                 self.datafiles = value
                 print self.datafiles
+                self.get_data_by_file()
 
 
 
@@ -96,8 +104,9 @@ class graph:
 
         for s in self.symbols:
             if s not in self.alldata:
+                print "retrieve data for symbol ", s
                 self.alldata[s] = web.DataReader(s, 'yahoo', start, end)
-            print s, map(lambda x:datetime.datetime.strftime(x,'%Y-%m-%d'), [start, end]), self.alldata[s].shape
+                print s, map(lambda x:datetime.datetime.strftime(x,'%Y-%m-%d'), [start, end]), self.alldata[s].shape
 
         #ung = web.DataReader("UNG", 'yahoo', start, end)
         #ugaz = web.DataReader("UGAZ",'yahoo',start,end)
@@ -114,11 +123,12 @@ class graph:
 
         for d in self.datafiles:
             if d not in self.alldata:
+                print "read data file ", d
                 filename = self.NG_datadesc[d]['filename']
                 datecol = self.NG_datadesc[d]['datecol']
                 print filename, datecol
                 self.alldata[d] = read_csvfile(filename, datecol)
-            print d, self.alldata[d].shape
+                print d, self.alldata[d].shape
 
 
     def check_data(self, k):
@@ -133,18 +143,21 @@ class graph:
         rng = pd.date_range(start, end, freq='B')
         print 'count of weekdays: ', rng.size
 
-        d = self.alldata[k][start:end+pd.Timedelta(days=1)]
-        print d.shape
+        #d = self.alldata[k][start:end+pd.Timedelta(days=1)] #so bfill works
+        d = self.alldata[k][start:end]
+        print 'raw data shape ', d.shape
 
         print "extra data in", k, "but not in timerange. these will be dropped"
         df = d[~d.index.isin(rng)]
-        print df
+        print df.shape
 
-        d_fill = d.reindex(rng, method='bfill', copy=False) #fill_value=0)
+        d_fill = d.reindex(rng, method='ffill', copy=False) #fill_value=0)
+        d_fill.fillna(method='bfill', inplace=True)
         print "filled data in", k, "according to timerange"
-        print d_fill[~rng.isin(d.index)]
+        print d_fill[~rng.isin(d.index)].shape
 
-        self.alldata[k] = d_fill
+        #self.alldata[k] = d_fill
+        return d_fill
 
 
     def check_all_data(self):
@@ -153,10 +166,10 @@ class graph:
         print '***'
 
         for s in self.symbols:
-            check_data(s)
+            self.check_data(s)
 
         for d in self.datafiles:
-            check_data(d)
+            self.check_data(d)
 
 
 
@@ -165,8 +178,10 @@ class graph:
         print 'graph.plot()'
         print '***'
 
-        plotfilename = self.dir_path+"/ngspot_ung.html"
-        output_file(plotfilename)
+        # don't need this when use bokeh.embed.components(p) to general
+        # div and script html
+        #plotfilename = self.dir_path+"/ngspot_ung.html"
+        #output_file(plotfilename)
 
         # create a new plot with a a datetime axis type
         TOOLS="crosshair,pan,wheel_zoom,box_zoom,reset,hover,previewsave"
@@ -176,24 +191,38 @@ class graph:
         end = self.timerange[1]
         #days = (end-start).days + 1
         graphDate_daily = pd.date_range(start, end, freq='B')
-        print graphDate_daily.size
+        print 'plot business days ', graphDate_daily.size
+
+        numberColors = 9
+        #colors = brewer["Spectral"][numberColors]
+        colors = Spectral11[0:numberColors]
 
         for s,m in self.symbols.items():
             sdata = self.alldata[s][start:end]
-            print sdata.shape
+            print 'prepare data source ---', s, sdata.shape
+
+            if(sdata.shape[0] != graphDate_daily.size):
+                sdata = self.check_data(s)
+                print 'data shape after checking ', sdata.shape
 
             source = ColumnDataSource(data=dict(
                 Date=graphDate_daily,
                 DateLabel=map(lambda x:datetime.datetime.strftime(x,'%Y-%m-%d'), sdata.index),
                 Data=sdata['Close'],
-                AdjData=sdata['Adj Close'] * m,
+                AdjData=sdata['Adj Close'] * float(m),
             ))
+            #create a random number between 0 to 16
+            rn =randint(0,numberColors-1)
             p.line('Date', 'AdjData',
-                source=source, color='navy',legend=s+"*"+str(m))
+                source=source, color=colors[rn],legend=s+"*"+str(m))
 
         for d,m in self.datafiles.items():
             ddata = self.alldata[d][start:end]
-            print ddata.shape
+            print 'prepare data source ---', d, ddata.shape
+
+            if(ddata.shape[0] != graphDate_daily.size):
+                ddata = self.check_data(d)
+                print 'data shape after checking ', ddata.shape
 
             ddate = self.NG_datadesc[d]['datecol']
             dd = self.NG_datadesc[d]['datacol']
@@ -202,10 +231,10 @@ class graph:
                 Date=graphDate_daily,
                 DateLabel=ddata[ddate],
                 Data=ddata[dd],
-                AdjData=ddata[dd]*m,
+                AdjData=ddata[dd] * float(m),
             ))
-
-            p.line('Date', 'AdjData', source=source, color='red',legend=d+"*"+str(m))
+            rn = randint(0,numberColors-1)
+            p.line('Date', 'AdjData', source=source, color=colors[rn],legend=d+"*"+str(m))
 
         # NEW: customize by setting attributes
         p.title = "NG Spot and UNG tick Price"
@@ -238,29 +267,51 @@ class graph:
         # show the results
         #show(p)
         #show(p2)
-        with open(plotfilename, "r") as fh:
-            return fh.read()
-            #return fh.readlines()
+        script, div = components(p)
+        return div, script
+
+        # lines=[]
+        # with open(plotfilename, "r") as fh:
+        #     #return fh.read()
+        #     lines = fh.readlines()
+        #
+        # return ''.join(lines[16:-2])
 
 
-    def request_graph(self, **kwargs):
-        mygraph.update_config(**kwargs)
-        mygraph.get_data_by_symbol()
-        mygraph.get_data_by_file()
+# #############################################
+# start of html:
+# <div class="plotdiv" id="ea0a4e02-d9f0-49f2-8edb-978321c9da6c"></div>
+#
+# <script type="text/javascript">
+# Bokeh.$(function() {
+# var docs_json = {
 
-        mygraph.check_all_data()
-        plothtml = mygraph.plot()
-        return plothtml
+# #############################################
+# end of html:
+# var render_items = [{"docid":"db269d2a-e5bf-4ed6-9f97-3008b3f9ae81","elementid":"ea0a4e02-d9f0-49f2-8edb-978321c9da6c","modelid":"9ca39362-b721-423a-9cea-41b866162ace"}];
+#
+# Bokeh.embed.embed_items(docs_json, render_items);
+# });
+# </script>
 
 
 if __name__ == '__main__':
 
     mygraph = graph()
 
-    kwargs = {'timerange':['2012-06-10', '2016-09-05'],
-                'symbols':{'ung':1.0},
+    kwargs = {'timerange':['2014-09-01', '2015-12-01'],
+                'symbols':{'ung':1.0, 'uso':1.0},
                 'datafiles':{'HenryHub-spotprice':5.0}
                 }
 
-    plothtml = mygraph.request_graph(**kwargs)
+    mygraph.update_config(**kwargs)
+    div, script = mygraph.plot()
+
+    import re
+    plotid = re.findall(r'.* id="(.*)".*', div)
+    print plotid[0]
+
     #print plothtml[5:15]
+
+    #print plothtml[16]
+    #print plothtml[-4:-2]

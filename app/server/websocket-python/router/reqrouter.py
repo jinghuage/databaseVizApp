@@ -43,7 +43,7 @@ class reqRouter:
         })
 
         self.add_router("ngviz", {
-            'app': "app_template.ngviz-bokeh.reqhandler"
+            'app': "app_template.ngviz_bokeh.reqhandler"
         })
 
 

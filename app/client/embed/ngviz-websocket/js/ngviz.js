@@ -10,14 +10,15 @@ $( document ).ready(function() {
 
     });
 
-    function add_symbol(value){
-      console.log("add symbol: ", value)
+    // add checked item to plotlist
+    function add_plotItem(value, plotlistid){
+      console.log("add plotItem: ", value, "to ", plotlistid)
 
-      var symbollist = $("#plotsymbols").val();
-      var arr = symbollist.split(',');
+      var plotItem_list = $(plotlistid).val();
+      var arr = plotItem_list.split(',');
       if(arr.length==1 && arr[0]=="") arr=[];
 
-      console.log(symbollist, arr);
+      console.log(plotItem_list, arr);
 
 
 
@@ -31,19 +32,20 @@ $( document ).ready(function() {
 
       if(!isin){
         arr.push(value+'*1.0');
-        symbollist = arr.join(',');
+        plotItem_list = arr.join(',');
 
-        $("#plotsymbols").val(symbollist);
+        $(plotlistid).val(plotItem_list);
       }
     }
 
-    function delete_symbol(value){
-      console.log("delete symbol: ", value)
+    // delete unchecked value from plotlist
+    function delete_plotItem(value, plotlistid){
+      console.log("delete plotItem: ", value, "from ", plotlistid)
 
-      var symbollist = $("#plotsymbols").val();
-      var arr = symbollist.split(',');
+      var plotItem_list = $(plotlistid).val();
+      var arr = plotItem_list.split(',');
       if(arr.length==1 && arr[0]=="") arr=[];
-      console.log(symbollist, arr);
+      console.log(plotItem_list, arr);
 
       var isin = false;
       var whichindex = 0;
@@ -58,23 +60,59 @@ $( document ).ready(function() {
 
       if(isin){
         arr.splice(whichindex, 1)
-        symbollist = arr.join(',');
-        $("#plotsymbols").val(symbollist);
+        plotItem_list = arr.join(',');
+        $(plotlistid).val(plotItem_list);
       }
     }
 
+    // format the list text into json format for messaging
+    function format_to_json(plotlistid) {
+        console.log("format to json");
 
-    for (var i = 0; i <= 3; i++) {
+        var plotItem_list = $(plotlistid).val().replace(/ /g,'');
+        var arr = plotItem_list.split(',');
+        if (arr.length == 1 && arr[0] == "") arr = [];
+        console.log(plotItem_list, arr);
+        var jlist = {};
+
+        $.each(arr, function(index, a){
+          console.log(a);
+          if(a.indexOf('*')!=-1){
+            var sar = a.split('*');
+            jlist[sar[0]] = sar[1];
+          }
+          else{
+            jlist[a] = '1.0';
+          }
+        });
+
+
+        return jlist;
+    }
+
+    // set change event to symbols checkboxes
+    var nsymbols = 3;
+    for (var i = 0; i <= nsymbols; i++) {
       var id = "#symbol"+i;
       $(id).change(function() {
         var val = $(this).val();
         if ($(this).is(':checked')) {
-            add_symbol(val);
-        } else delete_symbol(val);
+            add_plotItem(val, "#plotsymbols");
+        } else delete_plotItem(val, "#plotsymbols");
       });
     }
 
-
+    // set change event to datafile checkboxes
+    var ndatafiles = 6;
+    for (var i = 0; i <= ndatafiles; i++) {
+      var id = "#df"+i;
+      $(id).change(function() {
+        var val = $(this).val();
+        if ($(this).is(':checked')) {
+            add_plotItem(val, "#plotfiles");
+        } else delete_plotItem(val, "#plotfiles");
+      });
+    }
 
     // initialize the console and the Handler
     var C = new Console($("#console"));
@@ -91,16 +129,31 @@ $( document ).ready(function() {
     var Socket = new WebSocketClient(server, Handler);
 
     $("#plot").click(function(e) {
-        //var year = years[$("#year").val()];
-        var symbols = [];
-        symbols.push[document.myform.symbol1.value];
+
+        var date1 = $('#dailymin').val();
+        var date2 = $('#dailymax').val();
+        console.log(date1, date2);
+
+        var symbollist = format_to_json("#plotsymbols");
+        var filelist = format_to_json("#plotfiles");
+        console.log("symbol list:", symbollist);
+        console.log("datafile list:", filelist);
+
+        // var message = {
+        //   'server-app':'ngviz',
+        //   'message':{'timerange':['2012-06-10', '2016-09-05'],
+        //                 'symbols':{'ung':1.0},
+        //                 'datafiles':{'HenryHub-spotprice':5.0}
+        //                 }
+        // };
 
         var message = {
-          'server-app':'ngviz',
-          'message':{'timerange':['2012-06-10', '2016-09-05'],
-                        'symbols':{'ung':1.0},
-                        'datafiles':{'HenryHub-spotprice':5.0}
-                        }
+            "server-app": "ngviz",
+            "message": {
+              "timerange": [date1, date2],
+              "symbols": symbollist,
+              "datafiles": filelist
+            }
         };
 
         Socket.send(JSON.stringify(message));

@@ -98,11 +98,21 @@ The development roadmap might be complex:
 
   Comparison between bokeh and matplotlib+mpld3 apps:
 
-  - bokeh can have html widgets and interaction built in -- so does that mean bokeh transfer data combined with html/js, so once transferred to client, it became a standalone app and doesn't need more request back to server??? Unless you try to change datasource?? Is this true?-- Although it's probably not a very good structure to use here, that we have to isolate the datasource change use case out, which may just cause confusion. It's better to still use the client side user-interface, and server side plot generation architecture. 
+  - bokeh can have html widgets and interaction built in -- so does that mean bokeh transfer data combined with html/js, so once transferred to client, it became a standalone app and doesn't need more request back to server??? Unless you try to change datasource?? Is this true?-- Although it's probably not a very good structure to use here, that we have to isolate the datasource change use case out, which may just cause confusion. It's better to still use the client side user-interface, and server side plot generation architecture.
 
 
   - look at the html file bokeh created, it uses "https://cdn.pydata.org/bokeh/release/bokeh-0.11.1.min.js" script to render the data object generated from the plot. This is how mpld3 works as well. Note that this script is different from BokehJS -- which is a JS library like d3, allowing users to write plotting code in javascript directly.
 
   - Now lets draw some analogy to tableau. the tableau embed uses 'https://public.tableau.com/javascripts/api/viz_v1.js' script to render the viz data object I Suppose? And the Tableau javascript API "http://public.tableau.com/javascripts/api/tableau-2.js" is different again. This one allows user to write javascript code to do the embedding, instead of insert embed html snippet directly. Furthermore, it returns a javascript object of the viz, and allows some interaction with the viz object. Note again this API is very limited, it won't let you create new viz elements, like d3 and bokehjs can. It merely provides some interaction within the current viz elements.
 
-  -
+  Sep 27, 2016 log:
+  -------------------
+
+  Bokeh app works now.
+  Used bokeh.embed.components(plot) to generate script and div html, then send back to client side.
+
+  Note: Bokeh-0.11.1.js and css files must be include in the client side index.html already. Unlike mpld3, bokeh doesn't implement dynamic library loading in the html generated for each plot -- which is ok.
+
+  Also, Bokeh-0.12.js doesn't work so far. Maybe not compatible with the bokeh python version I am using right now -- may check on this later.
+
+  

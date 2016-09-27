@@ -24,7 +24,7 @@ def graph(**kwargs):
     msg = 'plotid:'+ plotid
     msg += ('fightml:<p> Graph style: ' +style+'</p>\n'+ fightml)
 
-
+    
     return msg
 
 

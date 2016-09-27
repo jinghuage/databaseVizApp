@@ -236,5 +236,6 @@ if __name__ == '__main__':
     plotid, fightml = request_graph('2011', 'summary')
 
     # to save the results
-    with open("fig.html", "wb") as fh:
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    with open(dir_path+"/fig.html", "wb") as fh:
         fh.write(fightml)
