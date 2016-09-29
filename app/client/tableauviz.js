@@ -66,7 +66,7 @@ viz.tableauViz = function() {
                     //html.push("<li>" + pair.fieldName);
                     html.push("<li>" + pair.formattedValue + "</li>");
                 }
-                console.log(html);
+                //console.log(html);
             }
 
             $('#'+markerSelectionDiv+' li').remove();
