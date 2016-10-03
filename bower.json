@@ -11,6 +11,7 @@
     "angular-route": "1.5.x",
     "bootstrap": "3.3.x",
     "jquery": "2.2.x",
+    "underscore": "1.8.x",
     "tableau": "2.x",
     "d3": "4.x"
   }

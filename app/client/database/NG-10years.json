@@ -3,7 +3,7 @@
   "dbname": "ng_symbol_datafiles",
   "vizapi": "embed",
   "url": "embed/ngviz-websocket/",
-  "dashboard": [
+  "views": [
     {"name": "index-ngviz", "desc": "Visualize NG data"}
   ],
   "startwith": 0

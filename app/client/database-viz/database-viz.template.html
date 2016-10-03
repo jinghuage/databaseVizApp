@@ -6,8 +6,8 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li ng-repeat="dashboard in $ctrl.vizBook.dashboard" class={{dashboard.name}} ng-click="$ctrl.applyNav(dashboard)">
-        <a href="" data-toggle="tooltip" title={{dashboard.desc}}>{{dashboard.name}}</a>
+      <li ng-repeat="view in $ctrl.vizBook.views" class={{view.name}} ng-click="$ctrl.applyNav(view)">
+        <a href="" data-toggle="tooltip" title={{view.desc}}>{{view.name}}</a>
       </li>
     </ul>
   </div>
@@ -37,7 +37,14 @@
         </li>
       </ul>
       <h5><i class="glyphicon glyphicon-info-sign"></i>
-            <small><b>USER SELECTION</b></small>
+            <small><b>FILTER</b></small>
+      </h5>
+      <ul id='quickfilter'>
+        <li></li>
+      </ul>
+      <button id='quickset' ng-click="$ctrl.setFilters()">Quick Set</button>
+      <h5><i class="glyphicon glyphicon-info-sign"></i>
+            <small><b>MARKS</b></small>
       </h5>
       <ul id='infobox'>
         <li>None</li>

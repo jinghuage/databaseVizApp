@@ -3,7 +3,7 @@
   "dbname": "afl_stats",
   "vizapi": "embed",
   "url": "embed/aflviz-websocket/",
-  "dashboard": [
+  "views": [
     {"name": "index-aflvis", "desc": "Overall plotting interface"},
     {"name": "plotgame_all", "desc": "Plot team performance of all games"},
     {"name": "plotgame_round", "desc": "Plot all games of a round"},

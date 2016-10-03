@@ -25,23 +25,27 @@ angular.
             .width(800)
             .height(1200)
             .vizDiv('viz')
-            .markerSelectionDiv('infobox');
+            .markerSelectionDiv('infobox')
+            .filterAccessDiv('quickfilter');
 
           console.log("create property myViz", self.vizBook.dbname);
 
           self.myViz();
 
           var start = self.vizBook.startwith;
-          self.selectNav = self.vizBook.dashboard[start];
+          self.selectNav = self.vizBook.views[start];
 
           $timeout(function () {
             self.setNavStyle(self.selectNav);
+            //self.applyNav(self.selectNav);
           }, 10);
         });
 
-        self.applyNav = function(dashboard){
-          self.myViz.changeView(dashboard);
-          self.selectNav = dashboard;
+        self.applyNav = function(view){
+          self.myViz.changeView(view);
+
+          self.selectNav = view;
+          self.setNavStyle(self.selectNav);
         }
 
         self.applyManagment = function(mg){
@@ -63,12 +67,34 @@ angular.
           else if(vizType == 'embed') return viz.embedViz();
         }
 
-        self.setNavStyle = function(dashboard){
+        self.setNavStyle = function(view){
           console.log("setNavStyle");
 
-          $(".viz-desc").text(dashboard.desc);
+          $(".viz-desc").text(view.desc);
           $(".active").removeClass('active');
-          $("." + dashboard.name).addClass('active');
+          $("." + view.name).addClass('active');
+
+        }
+
+        self.setFilters = function(){
+          var filters = self.myViz.filters();
+          //console.log(filters);
+          var newFilters = {};
+
+          for(var filter in filters){
+            //console.log(filter, jq(filter));
+            var filterVal = filters[filter];
+            var newval = JSON.parse($('#'+jq(filter)).val());
+
+            if(! _.isEqual(filterVal, newval)){
+              console.log('filter value changed from ', filterVal, 'to ', newval);
+              newFilters[filter] = newval;
+            }
+          }
+
+          //set the new filters
+          console.log(newFilters);
+          self.myViz.filters(newFilters);
         }
 
       }

@@ -3,7 +3,7 @@
   "dbname": "2012_nfl_pbp_data",
   "vizapi": "embed",
   "url": "embed/nfl/",
-  "dashboard": [
+  "views": [
     {"name": "nflChart", "desc": "Plot a game progression with animation"}
   ],
   "startwith": 0

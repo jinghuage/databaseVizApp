@@ -1,0 +1,14 @@
+{
+  "id": "GP41-Genbank-500samples-seqsplit",
+  "dbname": "ALL_GP41_FINAL_Genbank",
+  "vizapi": "tableau",
+  "url": "https://public.tableau.com/views/sample_pivot_seq/",
+  "views": [
+    {"name": "DistRegion", "desc": "Records Distribution in Regions", "type": "dashboard"},
+    {"name": "selectSeqView", "desc": "Show Sequence by Position", "type": "dashboard"},
+    {"name": "selectSeq", "desc": "Show Sequence as String", "type": "dashboard"},
+    {"name": "Deviation", "desc": "Show Code Deviation by Position", "type": "dashboard"},
+    {"name": "seqStat", "desc": "Code Statistic of all Samples", "type": "sheet"}
+  ],
+  "startwith": 2
+}

@@ -3,7 +3,7 @@
   "dbname": "",
   "vizapi": "embed",
   "url": "embed/chat/",
-  "dashboard": [
+  "views": [
     {"name": "websocket", "desc": "A simple chat client connected to python tornado server through websocket"}
   ],
   "startwith": 0

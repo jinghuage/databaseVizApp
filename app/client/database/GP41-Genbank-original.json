@@ -1,0 +1,8 @@
+{
+  "id": "GP41-Genbank-original",
+  "dbname": "ALL_GP41_FINAL_Genbank",
+  "vizapi": "tableau",
+  "url": "https://public.tableau.com/views/GP41_Original/",
+  "views": [{"name": "RCBubble", "desc": "Region/Community Bubble Chart", "type": "sheet"}],
+  "startwith": 0
+}

@@ -1,8 +1,17 @@
 [
     {
         "age": 0,
-        "id": "GP41-Genbank",
+        "id": "GP41-Genbank-original",
         "name": "ALL_GP41_FINAL_Genbank",
+        "category": "BioInformatics",
+        "source": "NIH",
+        "snippet": "gp41 sequence in HIV type 1 all subtypes",
+        "keywords": ["HIV","gene",""]
+    },
+    {
+        "age": 0,
+        "id": "GP41-Genbank-500samples-seqsplit",
+        "name": "ALL_GP41_FINAL_Genbank_500samples_SequenceSplit",
         "category": "BioInformatics",
         "source": "NIH",
         "snippet": "gp41 sequence in HIV type 1 all subtypes",
@@ -42,8 +51,8 @@
     },
     {
         "age": 4,
-        "id": "Stock-compare",
-        "name": "stock-tick-history",
+        "id": "Stock-indicator",
+        "name": "stock-tick-indicator",
         "category": "Finance",
         "source": "Yahoo Finance",
         "snippet": "Compare multiple stock history charts, with indicators."

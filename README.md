@@ -115,4 +115,9 @@ The development roadmap might be complex:
 
   Also, Bokeh-0.12.js doesn't work so far. Maybe not compatible with the bokeh python version I am using right now -- may check on this later.
 
-  
+  Oct 03, 2016 log:
+  -----------------
+  git branch step-6
+
+
+  Work on Tableu filters: All filters will be retrieved and can be quickly set using sidebar.

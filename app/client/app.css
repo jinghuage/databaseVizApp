@@ -68,6 +68,20 @@ use id to boost priority so no !important needed*/
     word-wrap: break-word;
 }
 
+#quickfilter {
+  list-style: none;
+  padding-left: 12px;
+}
+
+#quickset {
+  margin-left: 12px;
+}
+#quickfilter li {
+    font-size: 11px;
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
 .info-header {
   display: block;
   padding: 3px 0px;
