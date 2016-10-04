@@ -35,7 +35,7 @@ viz.tableauViz = function() {
         return m.length > 1 ? m : m[0];
     };
 
-    TableauWorkSheet.prototype.getFilters = function(filterAccessDiv, myfilters) {
+    TableauWorkSheet.prototype.getFilters = function(myfilters) {
 
         //var filtersVal = '';
         var onSuccess = function(filters) {
@@ -46,7 +46,7 @@ viz.tableauViz = function() {
 
                 //console.log(filter);
                 var filterName = filter.getFieldName();
-                $("#" + filterAccessDiv).append('<li>'+filterName+'</li>');
+                //$("#" + filterAccessDiv).append('<li>'+filterName+'</li>');
 
                 var type = filter.$type;
                 console.log(type);
@@ -67,7 +67,7 @@ viz.tableauViz = function() {
                 }
                 //console.log(filterVal);
 
-                $("#" + filterAccessDiv).append('<input type="text" id="' + jq(filterName) + '" value=' + JSON.stringify(filterVal) + '>');
+                //$("#" + filterAccessDiv).append('<input type="text" id="' + jq(filterName) + '" value=' + JSON.stringify(filterVal) + '>');
 
                 myfilters[filterName] = filterVal;
             });
@@ -126,7 +126,7 @@ viz.tableauViz = function() {
     //these vars have access functions, such as getter/setters
     var vizBook, vizDiv;
     var width, height;
-    var markerSelectionDiv, filterAccessDiv;
+    var markerSelectionDiv;
     var filters = {};
 
     //private to this module
@@ -153,10 +153,10 @@ viz.tableauViz = function() {
                     var sheet = _workbook.getActiveSheet();
                     var wss = myapp.getWorksheets(sheet);
 
-                    $('#' + filterAccessDiv + ' li').remove();
+                    //$('#' + filterAccessDiv + ' li').remove();
                     _worksheets = new TableauWorkSheet(wss);
                     filters = {};
-                    _worksheets.getFilters(filterAccessDiv, filters);
+                    _worksheets.getFilters(filters);
                     //console.log(filters);
 
                     //$("#" + filterAccessDiv).append(html.join(""));
@@ -346,7 +346,10 @@ viz.tableauViz = function() {
         _workbook.activateSheetAsync(view.name).then(function(sheet) {
           var wss = myapp.getWorksheets(sheet);
           _worksheets = new TableauWorkSheet(wss);
-          _worksheets.getFilters();
+
+          filters = {};
+          _worksheets.getFilters(filters);
+
         });
     };
 

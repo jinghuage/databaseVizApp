@@ -1,5 +1,6 @@
 node_modules
 app/client/vendor/bower_components
+app/client/viz-interact
 app/server/test-db
 app/server/express/data/db
 *.pyc

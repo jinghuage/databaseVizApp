@@ -121,3 +121,31 @@ The development roadmap might be complex:
 
 
   Work on Tableu filters: All filters will be retrieved and can be quickly set using sidebar.
+
+
+  todo:
+
+  - Angular dynamic html template - model connection. For example, each view will have different set of filters which need to be changed on the sidebar.
+
+
+  - Tableau 10: get underlying data. -- Switched the Genbank original to Tableau 10 version. Turns our the data dialog is the same, you can always turn on "all columns" and get all data. I guess they just added the js api functions to get the data into javascript.
+
+  - test the filter stuff to the sequence split version.
+
+  Oct 04, 2016 log:
+  -----------------
+  git branch step-6
+
+  Keep working on Tableau filters and Angular side bar
+
+  - change: the database json file include a default list of filters for each view, so only selected filters are initialized in side bar
+
+  - Angular will init the filters in side bar, and keep a self.filters array, which can be synced to the viz filters through buttons "GET/SET".
+
+  - As for the mark selections, still send the div to viz and let viz handle it through the user selection event
+
+  todo:
+
+  - really the tableau dashboards need to be cleaned. why the bubble view is always there???
+
+  -

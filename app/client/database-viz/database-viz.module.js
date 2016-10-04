@@ -2,5 +2,6 @@
 
 // Define the `databaseViz` module
 angular.module('databaseViz', [
-  'ngRoute'
+  'ngRoute',
+//  'vizInteract'
 ]);

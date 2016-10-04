@@ -2,7 +2,18 @@
   "id": "GP41-Genbank-original",
   "dbname": "ALL_GP41_FINAL_Genbank",
   "vizapi": "tableau",
-  "url": "https://public.tableau.com/views/GP41_Original/",
-  "views": [{"name": "RCBubble", "desc": "Region/Community Bubble Chart", "type": "sheet"}],
+  "url": "https://public.tableau.com/views/GP41_Original_Tableau10/",
+  "views": [
+    {"name": "RCBubble", "desc": "Region/Community Bubble Chart", "type": "dashboard", "filters":[
+    {"name":"Region", "value":""},
+    {"name":"Sample Date", "value":""},
+    {"name":"Subtype", "value":""},
+    {"name":"Sample Time", "value":""}
+    ]},
+    {"name": "YSubtypeBar", "desc": "Year/Subtype Bar Chart", "type": "dashboard", "filters":[
+    {"name":"Sample Date", "value":""},
+    {"name":"Subtype", "value":""}
+    ]}
+  ],
   "startwith": 0
 }

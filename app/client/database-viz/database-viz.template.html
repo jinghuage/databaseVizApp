@@ -40,9 +40,14 @@
             <small><b>FILTER</b></small>
       </h5>
       <ul id='quickfilter'>
-        <li></li>
+        <li ng-repeat = "filter in $ctrl.filters">
+          <a href="">{{filter.name}}</a>
+          <input type="text" id={{filter.id}} ng-change="$ctrl.change()" ng-model="filter.text">
+        </li>
       </ul>
-      <button id='quickset' ng-click="$ctrl.setFilters()">Quick Set</button>
+      <!-- <viz-interact></viz-interact> -->
+      <button class="side-button" ng-click="$ctrl.getFilters()">Get From Viz</button>
+      <button class="side-button" ng-click="$ctrl.setFilters()">Quick Set</button>
       <h5><i class="glyphicon glyphicon-info-sign"></i>
             <small><b>MARKS</b></small>
       </h5>

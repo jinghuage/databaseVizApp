@@ -73,13 +73,14 @@ use id to boost priority so no !important needed*/
   padding-left: 12px;
 }
 
-#quickset {
-  margin-left: 12px;
-}
 #quickfilter li {
     font-size: 11px;
     font-weight: bold;
     word-wrap: break-word;
+}
+
+.side-button {
+  margin-left: 12px;
 }
 
 .info-header {

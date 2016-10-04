@@ -20,8 +20,8 @@ viz.embedViz = function() {
 
     //todo: embed viz in vizDivDom
     var s = vizBook.startwith;
-    var dashboard = vizBook.dashboard[s];
-    var vizURL = vizBook.url + dashboard.name + '.html';
+    var view = vizBook.views[s];
+    var vizURL = vizBook.url + view.name + '.html';
 
     var iframe = '<iframe src="' + vizURL + '" width="' + width + '" height="'+ height + '"></iframe>';
 
