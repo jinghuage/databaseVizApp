@@ -39,7 +39,7 @@
       <h5><i class="glyphicon glyphicon-info-sign"></i>
             <small><b>FILTER</b></small>
       </h5>
-      <ul id='quickfilter'>
+      <ul class='side-list'>
         <li ng-repeat = "filter in $ctrl.filters">
           <a href="">{{filter.name}}</a>
           <input type="text" id={{filter.id}} ng-change="$ctrl.change()" ng-model="filter.text">
@@ -47,9 +47,22 @@
       </ul>
       <!-- <viz-interact></viz-interact> -->
       <button class="side-button" ng-click="$ctrl.getFilters()">Get From Viz</button>
-      <button class="side-button" ng-click="$ctrl.setFilters()">Quick Set</button>
+      <button class="side-button" ng-click="$ctrl.setFilters()">Filter</button>
+
       <h5><i class="glyphicon glyphicon-info-sign"></i>
-            <small><b>MARKS</b></small>
+            <small><b>SELECT</b></small>
+      </h5>
+      <ul class='side-list'>
+        <li ng-repeat = "sel in $ctrl.selections">
+          <a href="">{{sel.name}}</a>
+          <input type="text" id={{sel.id}} ng-change="$ctrl.change()" ng-model="sel.text">
+        </li>
+      </ul>
+      <button class="side-button" ng-click="$ctrl.getSelections()">Get From Viz</button>
+      <button class="side-button" ng-click="$ctrl.setSelections()">Select</button>
+      <!-- <viz-interact></viz-interact> -->
+      <h5><i class="glyphicon glyphicon-info-sign"></i>
+            <small><b>INFO</b></small>
       </h5>
       <ul id='infobox'>
         <li>None</li>

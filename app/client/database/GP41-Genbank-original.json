@@ -13,7 +13,15 @@
     {"name": "YSubtypeBar", "desc": "Year/Subtype Bar Chart", "type": "dashboard", "filters":[
     {"name":"Sample Date", "value":""},
     {"name":"Subtype", "value":""}
+    ]},
+    {"name": "YSSeq", "desc": "Show sequence selected from Year/Subtype Bar Chart", "type": "dashboard", "filters":[
+    {"name":"Sample Date", "value":""},
+    {"name":"Subtype", "value":""}
+    ],
+    "selections":[
+    {"name":"YEAR(Sample Date)", "value":[]},
+    {"name":"Subtype", "value":[]}
     ]}
   ],
-  "startwith": 0
+  "startwith": 2
 }

@@ -5,9 +5,14 @@
   "url": "embed/nfl/",
   "views": [
     {"name": "nflChart", "desc": "Plot a game progression with animation", "filters":[
-      {"name":"name1", "value":"value1"},
-      {"name":"name2", "value":"value2"},
-      {"name":"name3", "value":"value3"}
+      {"name":"f1", "value":""},
+      {"name":"f2", "value":""},
+      {"name":"f3", "value":""}
+    ],
+    "selections":[
+      {"name":"s1", "value":[]},
+      {"name":"s2", "value":[]},
+      {"name":"s3", "value":[]}
       ]
     }
   ],

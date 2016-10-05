@@ -148,4 +148,19 @@ The development roadmap might be complex:
 
   - really the tableau dashboards need to be cleaned. why the bubble view is always there???
 
-  -
+  - How exactly does selectMarks work? What's the different between filter and select? -- filter selects marks and show them only (update the view with the filtered result), while select maintain the current view and mark the selection.
+
+  Oct 05, 2016 log:
+  -----------------
+  git branch step-6
+
+  Fixed:
+
+  - filter and selection from sidebar now works. Read initial setup from database json file, then button click will bring sync with the viz
+
+  - same works with embedviz api, but not implemented inside viz yet
+
+  - Note that filter and selection is Async in Tableau viz api, so it's still needed to init the filter and selection when the viz is initialized, and when the view changes. When the sidebar filter is sent, the viz filters will be done Async. Same with selection.
+
+
+  

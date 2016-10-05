@@ -215,9 +215,9 @@ d3.csv("data/2012_nfl_pbp_data.csv", function(data) {
 
         });
 
-        console.log(team1, "score: ", team1_score);
-        console.log(team2, "score: ", team2_score);
-        console.log(half_rounds);
+        //console.log(team1, "score: ", team1_score);
+        //console.log(team2, "score: ", team2_score);
+        //console.log(half_rounds);
 
         var scoredata = [];
         for(var s in team1_score){

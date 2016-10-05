@@ -1,6 +1,6 @@
 //create namespace
 d3.chart = d3.chart || {};
-console.log("name space d3.chart is:", d3.chart);
+//console.log("name space d3.chart is:", d3.chart);
 
 
 
@@ -25,7 +25,7 @@ d3.chart.nflChart = function(){
     yAxis = d3.svg.axis().scale(yScale).orient("left"),
     area = d3.svg.area().x(X).y1(Y),
     line = d3.svg.line().x(X).y(Y);
-   
+
     var team1='TEAM1',
     team2='TEAM2'
     title='TEAM1 VS. TEAM2';
@@ -51,11 +51,11 @@ d3.chart.nflChart = function(){
         selection.each(function(data) {
 
             //console.log(data);
- 
+
             // convert each data item from original format(e.g. a dict) to array of 2
             // use xValue and yValue function, mostly passed from chart's x() and y() function call
             chartdata = data.map(function(offdata, i){
-                return offdata.map(function(sd, i){ 
+                return offdata.map(function(sd, i){
                     return sd = sd.map(function(d, i) {
                         return [xValue.call(sd, d, i), yValue.call(sd, d, i), textValue.call(sd, d, i)];
                     });
@@ -104,8 +104,8 @@ d3.chart.nflChart = function(){
                 .attr("x", xScale.range()[1] / 2)
                 .attr("y", -20)
                 .attr("dy", ".35em")
-                .style("font-size", "14pt") 
-                .attr("text-anchor", "middle")  
+                .style("font-size", "14pt")
+                .attr("text-anchor", "middle")
                 .style("fill", "green")
                 .text(team2);
 
@@ -120,8 +120,8 @@ d3.chart.nflChart = function(){
                 .attr("x", xScale.range()[1] / 2)
                 .attr("y", yScale.range()[0] + 20)
                 .attr("dy", ".35em")
-                .style("font-size", "14pt") 
-                .attr("text-anchor", "middle")  
+                .style("font-size", "14pt")
+                .attr("text-anchor", "middle")
                 .style("fill", "red")
                 .text(team1);
 
@@ -133,7 +133,7 @@ d3.chart.nflChart = function(){
                     .attr("x1", quarter*i).attr("y1", yScale.range()[0])
                     .style("stroke", "black");
             }
-            
+
 
             g.append("g").attr("class", "x axis");
             g.append("g").attr("class", "y axis");
@@ -144,12 +144,12 @@ d3.chart.nflChart = function(){
                 .attr("height", height);
 
             g.append("text")
-                .attr("x", (xScale.range()[1] / 2))             
+                .attr("x", (xScale.range()[1] / 2))
                 .attr("y", 20 - (margin.top))
                 .attr("dy", ".35em")
-                .attr("text-anchor", "middle")  
-                .style("font-size", "14pt") 
-                .style("text-decoration", "underline")  
+                .attr("text-anchor", "middle")
+                .style("font-size", "14pt")
+                .style("text-decoration", "underline")
                 .text(title);
 
 
@@ -185,7 +185,7 @@ d3.chart.nflChart = function(){
                 .attr("cy", function(d,i){return yScale(d[0][1]);})
                 .attr("r", 4)
                 .style("stroke", "green")
-                .style("fill", "none");        
+                .style("fill", "none");
 
             // draw scoreboard
             var scoreboard = g.append("g")
@@ -193,16 +193,16 @@ d3.chart.nflChart = function(){
                 .selectAll("g")
                 .data(score)
                 .enter().append("g")
-                .attr("transform", function(d, i){ 
+                .attr("transform", function(d, i){
                     var x = xScale(d.time);
                     var y = yScale(d.endzone);
                     return "translate(" + x + "," + y + ")";
                 });
 
- 
+
             scoreboard.append("line")
-                .style("stroke", function(d, i){ 
-                    if (d.team === team1) return "red"; 
+                .style("stroke", function(d, i){
+                    if (d.team === team1) return "red";
                     else return "green";})
                 .style("stroke-dasharray", "4,4")
                 .attr("x1", 0)
@@ -212,8 +212,8 @@ d3.chart.nflChart = function(){
 
             scoreboard.append("circle")
                 .attr("r", 5) //function(d, i){return d.score;})
-                .style("fill", function(d, i){ 
-                    if (d.team === team1) return "red"; 
+                .style("fill", function(d, i){
+                    if (d.team === team1) return "red";
                     else return "green";
                 });
 
@@ -236,7 +236,7 @@ d3.chart.nflChart = function(){
             .attr("y", yScale.range()[0] + 80)
             .attr("dy", ".35em")
             .text("Time (minutes)")
-            .attr("text-anchor", "middle")  
+            .attr("text-anchor", "middle")
             .attr("font-family", "sans-serif")
             .attr("font-size", "12pt")
 
@@ -251,12 +251,12 @@ d3.chart.nflChart = function(){
             .attr("y", ty)
             .attr("dy", ".35em")
             .text("Field (yards)")
-            .attr("text-anchor", "middle")  
+            .attr("text-anchor", "middle")
             .attr("dominant-baseline", "central")
             .attr("font-family", "sans-serif")
             .attr("font-size", "12pt")
             .attr("transform", function(d) {
-                return "rotate(-90,"+tx+","+ty+")" 
+                return "rotate(-90,"+tx+","+ty+")"
                 });
 
         });
@@ -276,7 +276,7 @@ d3.chart.nflChart = function(){
                       ['Illegal', 'Holding', 'Interference', 'Neutral Zone Infraction', 'Encroachment', 'Roughing the Passer', 'False Start', 'Offside', 'Face Mask', 'Unnecessary Roughness', '12 On-field', 'Delay of Game', 'Personal Foul', 'enforced', 'declined']];
 
         drive.append("text")
-            .text(function(d,i){ 
+            .text(function(d,i){
                 var t = d[2];
                 if(levelid == -1) return t.join(' ');
                 var level = levels[levelid];
@@ -285,16 +285,16 @@ d3.chart.nflChart = function(){
                     level.forEach(function(ld, li){
                         if(td.search(new RegExp(ld, "i")) != -1) nt.push(td);
                     });
-                });                
-                return nt.join(' ');       
+                });
+                return nt.join(' ');
             })
             .style("fill", color)
             .attr("x", function(d,i){
                 if(i % 2) return 5;
                 else return -5;
             })
-            .style("text-anchor", function(d,i) { 
-                return i%2 > 0 ? "start" : "end"; 
+            .style("text-anchor", function(d,i) {
+                return i%2 > 0 ? "start" : "end";
             })
             .attr("y", function(d,i){
                 //return 10 * (Math.random()*2-1);
@@ -311,7 +311,7 @@ d3.chart.nflChart = function(){
 
         if(team == team1) id = 0;
         else if(team == team2) id = 1;
-            
+
         var data = chartdata[id];
 
         var drive = d3.select("svg g").selectAll("."+team+".annotation").data(data);
@@ -405,7 +405,7 @@ d3.chart.nflChart = function(){
             length2arr[i] = totalLength;
         }
         //-----------------------------------------------------------------------------
-        // ERROR: assume team play interleaving, only works with halves. Wrong when half switchs. 
+        // ERROR: assume team play interleaving, only works with halves. Wrong when half switchs.
         //-----------------------------------------------------------------------------
 
         var firsthalf = halfrounds[0];
@@ -417,7 +417,7 @@ d3.chart.nflChart = function(){
             if(i%2 == 0){
                 //team1 rounds
                 if(i>1){
-                    delay1arr[d] = delay1arr[d-1] + play1 + play2; 
+                    delay1arr[d] = delay1arr[d-1] + play1 + play2;
                 }
                 play1 = length1arr[d] * durfac + btwplay;
             }
@@ -426,7 +426,7 @@ d3.chart.nflChart = function(){
                 delay2arr[d] = delay1arr[d] + play1;
                 play2 = length2arr[d] * durfac + btwplay;
             }
-              
+
         });
 
         var lastplay=0;
@@ -437,7 +437,7 @@ d3.chart.nflChart = function(){
         if((firsthalf.length) % 2 == 0) lastplay = delay2arr[hbr] + play2;
         else lastplay = delay1arr[hbr] + play1;
 
-        //start of second half, team2 
+        //start of second half, team2
         delay2arr[har] = lastplay;
 
         // team2 is the first to play offense in second half
@@ -559,28 +559,28 @@ d3.chart.nflChart = function(){
         return chart;
     };
     chart.scores = function(_) {
-        if( !arguments.length) return score; 
+        if( !arguments.length) return score;
         score = _;
         return chart;
     };
     chart.halfrounds = function(_) {
-        if( !arguments.length) return halfrounds; 
+        if( !arguments.length) return halfrounds;
         halfrounds = _;
         return chart;
-    };    
+    };
     chart.teams = function(_) {
-        if( !arguments.length) return teams; 
+        if( !arguments.length) return teams;
         team1 = _[0];
         team2 = _[1];
         return chart;
     };
     chart.title = function(_) {
-        if( !arguments.length) return title; 
+        if( !arguments.length) return title;
         title = _;
         return chart;
     };
     chart.chartdata = function(_) {
-        if( !arguments.length) return chartdata; 
+        if( !arguments.length) return chartdata;
         chartdata = _;
         return chart;
     };
