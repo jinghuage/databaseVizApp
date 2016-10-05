@@ -203,9 +203,10 @@ viz.tableauViz = function() {
                     filters = {};
                     _worksheets.getFilters(filters);
 
-                    seletedMarks = [];
-                    _worksheets.getSelectedMarks(seletedMarks);
+                    selectedMarks = [];
+                    _worksheets.getSelectedMarks(selectedMarks);
 
+                    myapp.showMarkInfo();
                 }
             }
             //comment out for layout debug only
@@ -236,27 +237,39 @@ viz.tableauViz = function() {
                   var fieldValue = pair.value;
 
                   am[fieldName] = fieldValue;
-                  if(fieldName.includes('Number of Records')){
-                    nrec += fieldValue;
-                  }
-
               }
 
               selectedMarks.push(am);
 
             });
 
-            if (selectedMarks.length > 0) {
-                //var markerSelectionDiv = 'infobox';
-                var html = [];
-                html.push('<li><b>' + marks.length + '</b> mark(s) selected</li>');
-
-                html.push('<li> total number of records <b>' + nrec + '</b></li>');
-
-                $('#' + markerSelectionDiv + ' li').remove();
-                $("#" + markerSelectionDiv).append(html.join(""));
-            }
+            myapp.showMarkInfo();
         }
+    };
+
+    myapp.showMarkInfo = function() {
+        if (selectedMarks.length == 0) return;
+
+        var nrec = 0;
+
+        $.each(selectedMarks, function(i, mark) {
+            for (var fieldName in mark) {
+                if (fieldName.includes('Number of Records')) {
+                    nrec += mark[fieldName];
+                    break;
+                }
+            }
+        });
+
+        //var markerSelectionDiv = 'infobox';
+        var html = [];
+        html.push('<li><b>' + selectedMarks.length + '</b> mark(s) selected</li>');
+
+        html.push('<li> total number of records <b>' + nrec + '</b></li>');
+
+        $('#' + markerSelectionDiv + ' li').remove();
+        $("#" + markerSelectionDiv).append(html.join(""));
+
     };
 
     myapp.filters = function(newfilters) {
