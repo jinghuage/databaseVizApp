@@ -1,15 +1,130 @@
-//module: viz.tableauViz -- load tableau viz to vizdiv placeholder
+//============================================================
+// module: viz.tableauViz
+// load tableau viz to vizdiv placeholder
+// interact with tableau viz
+//============================================================
 
+//------------------------------------------------------------
 //namespace: viz (window.viz)
+//------------------------------------------------------------
 var viz = viz || {};
 //console.log("name space viz is:", viz);
 
+//------------------------------------------------------------
+// helper functions
+//------------------------------------------------------------
 function jq( myid ) {
   return myid.replace(/[\])}[{(\s+]/g, '');
 }
 
 //console.log(jq("SUM(Number of Records)"));
 
+function showMarkInfo(marks, infodiv) {
+  //console.log('showMarkInfo: ', marks.length);
+
+    if (marks.length == 0) return;
+
+    var nrec = 0;
+
+    $.each(marks, function(i, mark) {
+        for (var fieldName in mark) {
+            if (fieldName.includes('Number of Records')) {
+                nrec += mark[fieldName];
+                break;
+            }
+        }
+    });
+
+    //var infodiv = 'infobox';
+    var html = [];
+    html.push('<li><b>' + marks.length + '</b> mark(s) selected</li>');
+
+    html.push('<li> total number of records <b>' + nrec + '</b></li>');
+
+    $('#' + infodiv + ' li').remove();
+    $("#" + infodiv).append(html.join(""));
+
+}
+
+function collectMarks(marks, myMarks) {
+    $.each(marks, function(i, mark) {
+        var am = {};
+        var pairs = mark.getPairs();
+        for (var pairIndex = 0; pairIndex < pairs.length; pairIndex++) {
+            var pair = pairs[pairIndex];
+            var fieldName = pair.fieldName;
+            var fieldValue = pair.value;
+            am[fieldName] = fieldValue;
+        }
+        console.log(am);
+        myMarks.push(am);
+    });
+}
+
+function collectFilters(filters, myFilters, nameRegister){
+  $.each(filters, function(i, filter) {
+      var filterVal;
+
+      //console.log(filter);
+      var filterName = filter.getFieldName();
+      var type = filter.$type;
+      //console.log(type);
+      switch (type) {
+          case 'quantitative':
+              filterVal = {};
+              filterVal['min'] = filter.$min.formattedValue;
+              filterVal['max'] = filter.$max.formattedValue;
+              break;
+          case 'categorical':
+              filterVal = [];
+              $.each(filter.$appliedValues, function(i, applied) {
+                  filterVal.push(applied.value);
+              });
+              break;
+          default:
+
+      }
+      console.log(filterName, type, filterVal);
+      if(nameRegister) nameRegister.push(filterName);
+      myFilters[filterName] = filterVal;
+  });
+}
+
+function applyFilter(worksheet, filterName, filterValue) {
+    if (!filterValue) return;
+
+    //console.log(typeof filterValue);
+    //console.log($.isArray(filterValue));
+
+    var vtype = typeof filterValue;
+
+    if (vtype == 'number' || vtype == 'string' || $.isArray(filterValue)) {
+        console.log('applyFilterAsync', filterName, filterValue);
+        worksheet.applyFilterAsync(
+            filterName, //"Region",
+            filterValue, //"The Americas",
+            tableau.FilterUpdateType.REPLACE);
+    } else if (vtype == 'object') {
+        console.log('applyRangeFilterAsync', filterName, filterValue);
+
+        if (filterName.includes('Date')) {
+            var mindate = filterValue['min'];
+            var maxdate = filterValue['max'];
+            filterValue['min'] = new Date(mindate);
+            filterValue['max'] = new Date(maxdate);
+        }
+
+        worksheet.applyRangeFilterAsync(
+            filterName, //"Date",
+            filterValue, //{min: minvalue, max: maxvalue},
+            tableau.FilterUpdateType.REPLACE);
+    }
+
+}
+
+//------------------------------------------------------------
+// the tableauViz module
+//------------------------------------------------------------
 viz.tableauViz = function() {
 
     function TableauWorkSheet(wss) {
@@ -37,50 +152,15 @@ viz.tableauViz = function() {
 
     TableauWorkSheet.prototype.getFilters = function(myfilters) {
 
-        //var filtersVal = '';
-        var onSuccess = function(filters) {
-            console.log("This worksheet has " + filters.length + " filter(s) associated with it.");
-
-            $.each(filters, function(i, filter) {
-                var filterVal;
-
-                //console.log(filter);
-                var filterName = filter.getFieldName();
-                //$("#" + filterAccessDiv).append('<li>'+filterName+'</li>');
-
-                var type = filter.$type;
-                //console.log(type);
-                switch (type) {
-                    case 'quantitative':
-                        filterVal = {};
-                        filterVal['min'] = filter.$min.formattedValue;
-                        filterVal['max'] = filter.$max.formattedValue;
-                        break;
-                    case 'categorical':
-                        filterVal = [];
-                        $.each(filter.$appliedValues, function(i, applied) {
-                            filterVal.push(applied.value);
-                        });
-                        break;
-                    default:
-
-                }
-                //console.log(filterVal);
-
-                //$("#" + filterAccessDiv).append('<input type="text" id="' + jq(filterName) + '" value=' + JSON.stringify(filterVal) + '>');
-
-                myfilters[filterName] = filterVal;
-            });
-        };
-
-        var onError = function(err) {
-            alert("Whoops");
-        };
-
 
         this.forEach(function(s) {
             //console.log('worksheet ' + s.getName());
-            s.getFiltersAsync().then(onSuccess, onError);
+            s.myFilterNames = [];
+            s.getFiltersAsync().then(function(filters) {
+                console.log(s.getName()+ ":This worksheet has " + filters.length + " filter(s) associated with it.");
+
+                collectFilters(filters, myfilters, s.myFilterNames);
+            });
         });
 
     };
@@ -88,70 +168,30 @@ viz.tableauViz = function() {
     TableauWorkSheet.prototype.setFilters = function(newFilters) {
 
         this.forEach(function(s) {
-            for(var filterName in newFilters) {
-                    var filterValue = newFilters[filterName];
+          var avil = s.myFilterNames;
+            for (var filterName in newFilters) {
+                if(avil.indexOf(filterName) == -1)  return;
 
-                    if (filterValue) {
-                        //console.log(typeof filterValue);
-                        //console.log($.isArray(filterValue));
-
-                        var vtype = typeof filterValue;
-
-                        if (vtype == 'number' || vtype == 'string' || $.isArray(filterValue)) {
-                          console.log('applyFilterAsync', filterName, filterValue);
-                            s.applyFilterAsync(
-                                filterName, //"Region",
-                                filterValue, //"The Americas",
-                                tableau.FilterUpdateType.REPLACE);
-                        } else if (vtype == 'object') {
-                          console.log('applyRangeFilterAsync', filterName, filterValue);
-
-                          if(filterName.includes('Date')){
-                            var mindate = filterValue['min'];
-                            var maxdate = filterValue['max'];
-                            filterValue['min'] = new Date(mindate);
-                            filterValue['max'] = new Date(maxdate);
-                          }
-
-                            s.applyRangeFilterAsync(
-                                filterName, //"Date",
-                                filterValue, //{min: minvalue, max: maxvalue},
-                                tableau.FilterUpdateType.REPLACE);
-                        }
-                    }
-                }
+                console.log('filter '+filterName+' is in sheet '+s.getName());
+                var filterValue = newFilters[filterName];
+                applyFilter(s, filterName, filterValue);
+            }
         });
     };
 
-    TableauWorkSheet.prototype.getSelectedMarks = function(myMarks) {
-
-      var onSuccess = function(marks) {
-          console.log("This worksheet has " + marks.length + " mark(s)  selected.");
-
-          //myMarks.concat(marks);
-
-          $.each(marks, function(i, mark){
-            var am = {};
-            var pairs = mark.getPairs();
-            for (var pairIndex = 0; pairIndex < pairs.length; pairIndex++) {
-                var pair = pairs[pairIndex];
-                var fieldName = pair.fieldName;
-                var fieldValue = pair.value;
-                am[fieldName] = fieldValue;
-            }
-            myMarks.push(am);
-          });
-      }
-
-      var onError = function(err) {
-          alert("Whoops");
-      };
+    TableauWorkSheet.prototype.getSelectedMarks = function(myMarks, infodiv) {
 
       this.forEach(function(s) {
           //console.log('worksheet '+s.getName());
-          s.getSelectedMarksAsync().then(onSuccess, onError);
+          s.getSelectedMarksAsync().then(function(marks) {
+              console.log("This worksheet has " + marks.length + " mark(s)  selected.");
+
+              //myMarks.concat(marks);
+              collectMarks(marks, myMarks);
+              showMarkInfo(myMarks, infodiv);
+          });
       });
-    }
+    };
 
     TableauWorkSheet.prototype.selectMarks = function(newSelections) {
         this.forEach(function(s) {
@@ -204,14 +244,15 @@ viz.tableauViz = function() {
                     _worksheets.getFilters(filters);
 
                     selectedMarks = [];
-                    _worksheets.getSelectedMarks(selectedMarks);
+                    _worksheets.getSelectedMarks(selectedMarks, markerSelectionDiv);
 
-                    myapp.showMarkInfo();
+                    //showMarkInfo();
                 }
             }
             //comment out for layout debug only
         _viz = new tableauSoftware.Viz(vizDivDom, vizURL, options);
         myapp.listenToMarksSelection();
+        myapp.listenToFilterChange();
     };
 
     myapp.listenToMarksSelection = function() {
@@ -223,66 +264,40 @@ viz.tableauViz = function() {
         }
 
         function reportSelectedMarks(marks) {
-
-            console.log("reportSelectedMarks", marks);
-            var nrec = 0;
-
-            $.each(marks, function(i, mark){
-              var am = {};
-              var pairs = mark.getPairs();
-
-              for (var pairIndex = 0; pairIndex < pairs.length; pairIndex++) {
-                  var pair = pairs[pairIndex];
-                  var fieldName = pair.fieldName;
-                  var fieldValue = pair.value;
-
-                  am[fieldName] = fieldValue;
-              }
-
-              selectedMarks.push(am);
-
-            });
-
-            myapp.showMarkInfo();
+            //console.log("reportSelectedMarks", marks);
+            selectedMarks=[];
+            collectMarks(marks, selectedMarks);
+            showMarkInfo(selectedMarks, markerSelectionDiv);
         }
     };
 
-    myapp.showMarkInfo = function() {
-        if (selectedMarks.length == 0) return;
+    myapp.listenToFilterChange = function() {
+        _viz.addEventListener('filterchange', onFilterChange);
 
-        var nrec = 0;
+        function onFilterChange(filterEvent) {
+            return filterEvent.getFilterAsync().then(reportSelectedFilter);
+        }
 
-        $.each(selectedMarks, function(i, mark) {
-            for (var fieldName in mark) {
-                if (fieldName.includes('Number of Records')) {
-                    nrec += mark[fieldName];
-                    break;
-                }
-            }
-        });
+        function reportSelectedFilter(filter) {
+          console.log('report filter change');
 
-        //var markerSelectionDiv = 'infobox';
-        var html = [];
-        html.push('<li><b>' + selectedMarks.length + '</b> mark(s) selected</li>');
+            var fname = filter.getFieldName();
+            var ftype = filter.getFilterType();
 
-        html.push('<li> total number of records <b>' + nrec + '</b></li>');
+            //console.log(fname, ftype, filter.$caption, filter.$type, filter.$appliedValues);
 
-        $('#' + markerSelectionDiv + ' li').remove();
-        $("#" + markerSelectionDiv).append(html.join(""));
-
+            collectFilters([filter], filters );
+        }
     };
 
     myapp.filters = function(newfilters) {
       if (!arguments.length){
         return filters;
       }
-      _worksheets.setFilters(newfilters);
 
-      // TOdo: shouldn't this be moved into OnSucess function of
-      // _worksheet.setFilters()??
-      for(var f in newfilters){
-        filters[f] = newfilters[f];
-      }
+      //filters will be updated in filter change event
+      //after filter is Successful
+      _worksheets.setFilters(newfilters);
 
       return myapp;
     };
@@ -292,6 +307,8 @@ viz.tableauViz = function() {
         return selectedMarks;
       }
 
+      //selectMarks will be updated in mark selection event
+      //after selection is Successful
       selectedMarks = [];
       _worksheets.selectMarks(newSelections);
 
@@ -321,6 +338,12 @@ viz.tableauViz = function() {
         _workbook.activateSheetAsync(view.name).then(function(sheet) {
             var wss = myapp.getWorksheets(sheet);
             _worksheets = new TableauWorkSheet(wss);
+
+            filters = {};
+            _worksheets.getFilters(filters);
+
+            selectedMarks = [];
+            _worksheets.getSelectedMarks(selectedMarks, markerSelectionDiv);
         });
     };
 

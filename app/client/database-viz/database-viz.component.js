@@ -145,7 +145,7 @@ angular.
             for (var i = 0; i < self.selections.length; i++) {
                 var selection = self.selections[i];
                 var selectionName = selection.name;
-                var selectionVal = selection.value;
+                var selectionVal = selection.value = [];
 
                 $.each(selections, function(i, sel) {
                     var newval = sel[selectionName];
