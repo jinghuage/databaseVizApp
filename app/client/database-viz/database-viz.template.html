@@ -46,8 +46,8 @@
         </li>
       </ul>
       <!-- <viz-interact></viz-interact> -->
-      <button class="side-button" ng-click="$ctrl.getFilters()">Get Current</button>
-      <button class="side-button" ng-click="$ctrl.setFilters()">Filter</button>
+      <button ng-show="$ctrl.hasFilter" class="side-button" ng-click="$ctrl.getFilters()">Get Current</button>
+      <button ng-show="$ctrl.hasFilter" class="side-button" ng-click="$ctrl.setFilters()">Filter</button>
 
       <h5><i class="glyphicon glyphicon-info-sign"></i>
             <small><b>SELECT</b></small>
@@ -58,8 +58,8 @@
           <input type="text" id={{sel.id}} ng-change="$ctrl.change()" ng-model="sel.text">
         </li>
       </ul>
-      <button class="side-button" ng-click="$ctrl.getSelections()">Get Current</button>
-      <button class="side-button" ng-click="$ctrl.setSelections()">Select</button>
+      <button ng-show="$ctrl.hasSelection" class="side-button" ng-click="$ctrl.getSelections()">Get Current</button>
+      <button ng-show="$ctrl.hasSelection" class="side-button" ng-click="$ctrl.setSelections()">Select</button>
       <!-- <viz-interact></viz-interact> -->
       <h5><i class="glyphicon glyphicon-info-sign"></i>
             <small><b>INFO</b></small>

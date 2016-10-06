@@ -22,7 +22,7 @@ function jq( myid ) {
 function showMarkInfo(marks, infodiv) {
   //console.log('showMarkInfo: ', marks.length);
 
-    if (marks.length == 0) return;
+    //if (marks.length == 0) return;
 
     var nrec = 0;
 
@@ -344,6 +344,8 @@ viz.tableauViz = function() {
 
             selectedMarks = [];
             _worksheets.getSelectedMarks(selectedMarks, markerSelectionDiv);
+
+            showMarkInfo(selectedMarks);
         });
     };
 

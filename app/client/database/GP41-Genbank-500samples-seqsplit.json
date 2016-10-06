@@ -2,23 +2,32 @@
   "id": "GP41-Genbank-500samples-seqsplit",
   "dbname": "ALL_GP41_FINAL_Genbank",
   "vizapi": "tableau",
-  "url": "https://public.tableau.com/views/sample_pivot_seq/",
+  "url": "https://public.tableau.com/views/sample_pivot_seq_Tableau10/",
   "views": [
     {"name": "DistRegion", "desc": "Records Distribution in Regions", "type": "dashboard"},
     {"name": "selectSeqView", "desc": "Show Sequence by Position", "type": "dashboard", "filters":[
     {"name":"Region", "value":""},
-    {"name":"Sample Date", "value":""},
-    {"name":"Subtype", "value":""},
-    {"name":"Sample Time", "value":""}
-    ]},
-    {"name": "selectSeq", "desc": "Show Sequence as String", "type": "dashboard", "filters":[
+    {"name":"YEAR(Sample Date)", "value":""},
+    {"name":"Subtype", "value":""}
+    ],"selections": [{
+        "name": "YEAR(Sample Date)",
+        "value": []
+    }, {
+        "name": "Subtype",
+        "value": []
+    }]},
+    {"name": "Deviation", "desc": "Show Code Deviation by Position", "type": "dashboard","filters":[
     {"name":"Region", "value":""},
-    {"name":"Sample Date", "value":""},
+    {"name":"YEAR(Sample Date)", "value":""},
     {"name":"Subtype", "value":""},
     {"name":"Sample Time", "value":""}
-    ]},
-    {"name": "Deviation", "desc": "Show Code Deviation by Position", "type": "dashboard"},
-    {"name": "seqStat", "desc": "Code Statistic of all Samples", "type": "sheet"}
+    ],"selections": [{
+        "name": "YEAR(Sample Date)",
+        "value": []
+    }, {
+        "name": "Region",
+        "value": []
+    }]}
   ],
-  "startwith": 2
+  "startwith": 0
 }

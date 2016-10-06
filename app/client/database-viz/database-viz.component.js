@@ -17,6 +17,8 @@ angular.
         //self.filters = [{'name':'filterName1', 'value':'filterVal1'}, {'name':'filterName2','value':'filterVal2'}];
         self.filters=[];
         self.selections = [];
+        self.hasSelection = false;
+        self.hasFilter = false;
 
 
         $http.get('database/' + $routeParams.databaseId + '.json').then(function(response) {
@@ -79,6 +81,22 @@ angular.
 
           self.filters = self.selectNav.filters;
           self.selections = self.selectNav.selections;
+
+          if(self.selections === undefined || self.selections == []) {
+            self.hasSelection=false;
+          }
+          else {
+            self.hasSelection=true;
+          }
+          //console.log(self.selections, self.hasSelection);
+
+          if(self.filters === undefined || self.filters == []) {
+            self.hasFilter=false;
+          }
+          else {
+            self.hasFilter=true;
+          }
+          //console.log(self.filters, self.hasFilter);
 
           $(".viz-desc").text(view.desc);
           $(".active").removeClass('active');
