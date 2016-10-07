@@ -1,5 +1,5 @@
 <div class="viz-header">
-  <a href="/"><i class="glyphicon glyphicon-home"></i> Back to Database List</a>
+  <a href=".."><i class="glyphicon glyphicon-home"></i> Back to Database List</a>
   <h3 class="text-center"> {{$ctrl.vizBook.dbname}} Database Visualization </h3>
 </div>
 
@@ -18,16 +18,17 @@
   <p class='viz-desc'>View description Goes here</p>
 
   <div class="row">
-    <div class="col-md-2" id="viz-sidebar">
+    <div class="col-md-3" id="viz-sidebar">
       <!--Sidebar content-->
-      <h5><i class="glyphicon glyphicon-home"></i>
+      <!-- <h5><i class="glyphicon glyphicon-home"></i>
             <small><b>WORKBOOK</b></small>
       </h5>
       <ul id='vizmenu' class='nav nav-pills nav-stacked'>
         <li ng-repeat="mg in $ctrl.management" ng-click="$ctrl.applyManagement(mg)">
           <a href="">{{mg}}</a>
         </li>
-      </ul>
+      </ul> -->
+      <div class="info-bar"
       <h5><i class="glyphicon glyphicon-user"></i>
             <small><b>EXPORT</b></small>
       </h5>
@@ -36,40 +37,52 @@
           <a href="">{{exp}}</a>
         </li>
       </ul>
+      </div>
+
+      <div class="info-bar"
       <h5><i class="glyphicon glyphicon-info-sign"></i>
             <small><b>FILTER</b></small>
       </h5>
       <ul class='side-list'>
         <li ng-repeat = "filter in $ctrl.filters">
           <a href="">{{filter.name}}</a>
-          <input type="text" id={{filter.id}} ng-change="$ctrl.change()" ng-model="filter.text">
+          <br>
+          <input type="text" id={{filter.id}} ng-change="$ctrl.change()" ng-model="filter.text" class="side-input">
         </li>
       </ul>
       <!-- <viz-interact></viz-interact> -->
       <button ng-show="$ctrl.hasFilter" class="side-button" ng-click="$ctrl.getFilters()">Get Current</button>
       <button ng-show="$ctrl.hasFilter" class="side-button" ng-click="$ctrl.setFilters()">Filter</button>
+      </div>
 
+      <div class="info-bar">
       <h5><i class="glyphicon glyphicon-info-sign"></i>
             <small><b>SELECT</b></small>
       </h5>
       <ul class='side-list'>
         <li ng-repeat = "sel in $ctrl.selections">
           <a href="">{{sel.name}}</a>
-          <input type="text" id={{sel.id}} ng-change="$ctrl.change()" ng-model="sel.text">
+          <br>
+          <input type="text" id={{sel.id}} ng-change="$ctrl.change()" ng-model="sel.text" class="side-input">
         </li>
       </ul>
       <button ng-show="$ctrl.hasSelection" class="side-button" ng-click="$ctrl.getSelections()">Get Current</button>
       <button ng-show="$ctrl.hasSelection" class="side-button" ng-click="$ctrl.setSelections()">Select</button>
       <!-- <viz-interact></viz-interact> -->
+      </div>
+
+      <div class="info-bar">
       <h5><i class="glyphicon glyphicon-info-sign"></i>
             <small><b>INFO</b></small>
       </h5>
       <ul id='infobox'>
         <li>None</li>
       </ul>
+      </div>
+      
     </div>
 
-    <div class="col-md-10">
+    <div class="col-md-9">
       <!--Body content-->
       <div id='viz'></div>
     </div>
