@@ -1,4 +1,4 @@
-# gp41_genbank_sample
+# database viz app
 
 Sep 6, 2016 log:
 -----------------
@@ -161,5 +161,3 @@ The development roadmap might be complex:
   - same works with embedviz api, but not implemented inside viz yet
 
   - Note that filter and selection is Async in Tableau viz api, so it's still needed to init the filter and selection when the viz is initialized and when the view changes. When the sidebar filter is sent, the viz filters will be done Async. Same with selection. On the viz side, after the filter and selection are done Successfully, the event will be triggered and the filter and selection will be updated.
-
-  
