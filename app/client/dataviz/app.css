@@ -1,0 +1,130 @@
+.viz-desc{
+  font-size: 24px;
+  padding: 10px;
+}
+
+
+* {
+  border-radius: 0 !important;
+}
+
+.viz-header{
+  background-color: #00005e;
+  color: #ffffff;
+  padding-bottom: 20px;
+}
+
+.jumbotron {
+    background-color: #00005e; /* dark blue */
+    color: #ffffff;
+    padding: 20px;
+    font-family: Montserrat, sans-serif;
+}
+.navbar {
+    margin-bottom: 0;
+    background-color: #777777;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #00005e !important;
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+/* make sidebar nav pills height smaller.
+use id to boost priority so no !important needed*/
+
+#viz-sidebar .nav-pills {
+    min-height: 20px;
+}
+
+#viz-sidebar .nav-pills li a{
+    padding-top:0px;
+    padding-bottom:4px;
+    height: 20px;
+}
+
+#infobox {
+  list-style: none;
+  padding-left: 12px;
+}
+
+#infobox li {
+    font-size: 11px;
+    word-wrap: break-word;
+}
+
+.side-list {
+  list-style: none;
+  padding-left: 12px;
+}
+
+.side-list li {
+    font-size: 11px;
+    font-weight: bold;
+    word-wrap: break-word;
+}
+.side-input {
+  width: 80%;
+}
+.side-button {
+  margin-left: 12px;
+}
+
+.info-bar {
+  background-color: #eeeeee;
+  border: 1px solid #A9A9A9;
+  border-radius: 5px !important;
+  display: block;
+  padding: 5px;
+  margin-top: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #333333;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+footer {
+    background-color: #5e5e5e; /* dark blue */
+    color: #ffffff;
+    padding: 10px;
+    font-family: Montserrat, sans-serif;
+}
+
+footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #00005e;
+}
+/* View: database list */
+.database {
+  list-style: none;
+}
+
+.database li {
+  clear: both;
+  height: 115px;
+  padding-top: 15px;
+}
+
+iframe {
+  margin: 0;
+  padding: 0;
+  border: none;
+}

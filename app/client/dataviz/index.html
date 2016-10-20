@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" ng-app="databaseVizApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>GP41 Genbank Samples</title>
+    <link rel="stylesheet" href="../vendor/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="app.css" />
+
+    <script src="../vendor/bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="http://public.tableau.com/javascripts/api/tableau-2.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="../vendor/bower_components/angular/angular.js"></script>
+    <script src="../vendor/bower_components/angular-route/angular-route.js"></script>
+    <script src="../vendor/bower_components/angular-resource/angular-resource.js"></script>
+
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+    <script src="database-list/database-list.module.js"></script>
+    <script src="database-list/database-list.component.js"></script>
+    <script src="database-viz/database-viz.module.js"></script>
+    <script src="database-viz/database-viz.component.js"></script>
+
+    <script src="../core/core.module.js"></script>
+    <script src="../core/checkmark/checkmark.filter.js"></script>
+    <script src="../core/restful/restful.module.js"></script>
+    <script src="../core/restful/restful.service.js"></script>
+
+    <script src="tableauviz.js"></script>
+    <script src="embedviz.js"></script>
+</head>
+
+<body>
+
+
+  <div ng-view></div>
+
+
+</body>
+</html>

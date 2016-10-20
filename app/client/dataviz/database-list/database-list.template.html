@@ -1,0 +1,57 @@
+
+<div class="jumbotron text-center">
+  <h1>Data Visualization Tools</h1>
+  <p>Visually explore data with Tableau, D3, Python, Bokeh, JSMol, and more</p>
+</div>
+
+<div id="myPage" class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <!--Sidebar content-->
+      <div class="info-bar">
+      <p>
+        Search:
+        <input ng-model="$ctrl.query" />
+      </p>
+
+      <p>
+        Sort by:
+        <select ng-model="$ctrl.orderProp">
+          <option value="name">Alphabetical</option>
+          <option value="age">Newest</option>
+        </select>
+      </p>
+      </div>
+
+      <div class="info-bar">
+        <p>source on github: </p>
+        <a href="https://github.com/jinghuage/databaseVizApp">database viz app repo</a>
+      </div>
+
+    </div>
+    <div class="col-md-9">
+      <!--Body content-->
+
+      <ul class="database">
+        <li ng-repeat="database in $ctrl.databases | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="thumbnail">
+          <a href="#!/database/{{database.id}}">{{database.name}}</a>
+          <p>{{database.category}}</p>
+          <p>{{database.snippet}}</p>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p> © Copyright Jinghua Ge. Last updated on <span id="time"></span> </p>
+  <p> Built with AngularJS, NodeJS, Bootstrap frameworks </p>
+</footer>
+<script>
+var today = new Date();
+document.getElementById('time').innerHTML=today.toDateString();
+</script>

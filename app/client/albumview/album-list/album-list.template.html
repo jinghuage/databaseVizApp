@@ -1,0 +1,56 @@
+<div class="jumbotron text-center">
+  <h1>Album View</h1>
+  <p>Explore your class project albums</p>
+</div>
+
+<div id="myPage" class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <!--Sidebar content-->
+      <div class="info-bar">
+      <p>
+        Search:
+        <input ng-model="$ctrl.query" />
+      </p>
+
+      <p>
+        Sort by:
+        <select ng-model="$ctrl.orderProp">
+          <option value="name">Alphabetical</option>
+          <option value="class">Newest</option>
+        </select>
+      </p>
+      </div>
+
+      <!-- <div class="info-bar">
+        <p>source on github: </p>
+        <a href="https://github.com/jinghuage/albumVizApp">album viz app repo</a>
+      </div> -->
+
+    </div>
+    <div class="col-md-9">
+      <!--Body content-->
+
+      <ul class="albums">
+        <li ng-repeat="album in $ctrl.albums | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="thumbnail">
+          <a href="#!/album/{{album.id}}">{{album.name}}</a>
+          <p>{{album.class}}</p>
+          <p>{{album.snippet}}</p>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p> © Copyright Jinghua Ge. Last updated on <span id="time"></span> </p>
+  <p> Built with AngularJS, NodeJS, Bootstrap frameworks </p>
+</footer>
+<script>
+var today = new Date();
+document.getElementById('time').innerHTML=today.toDateString();
+</script>

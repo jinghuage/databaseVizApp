@@ -1,0 +1,60 @@
+[
+    {
+        "age": 0,
+        "id": "GP41-Genbank-original",
+        "name": "ALL_GP41_FINAL_Genbank",
+        "category": "BioInformatics",
+        "source": "NIH",
+        "snippet": "Tableau visualization of database gp41 sequence in HIV type 1 all subtypes. Use Tableau Javascript API to interact with viz served at Tableau public server",
+        "keywords": ["HIV","gene",""]
+    },
+    {
+        "age": 0,
+        "id": "GP41-Genbank-500samples-seqsplit",
+        "name": "ALL_GP41_FINAL_Genbank_500samples_SequenceSplit",
+        "category": "BioInformatics",
+        "source": "NIH",
+        "snippet": "Enhanced version of the original Tableau viz app. Provide color coded sequence view, and sequence statistics view. ",
+        "keywords": ["HIV","gene",""]
+    },
+    {
+        "age": 1,
+        "id": "NFL-2012",
+        "name": "2012_nfl_pbp_data",
+        "category": "Sports",
+        "source": "https://github.com/stevehebert/football_data",
+        "snippet": "NFL data downloaded from https://github.com/stevehebert/football_data, visualized and animated use D3.js. Choose a set of teams, plot the game, and watch the animation!"
+    },
+    {
+        "age": 4,
+        "id": "SimpleChat",
+        "name": "SimpleChat",
+        "category": "Websocket Test",
+        "source": "",
+        "snippet": "A simple chat test connected to python or NodeJS websocket server. Note this won't work on avsl.cct.lsu.edu web server. A websocket server must be running on the server side. "
+    },
+    {
+        "age": 2,
+        "id": "AFL-2011-2014",
+        "name": "afl_stats",
+        "category": "Sports",
+        "source": "http://afltables.com/afl/seas/",
+        "snippet": "Australia Football League (AFL) Game statistics and score progression. This visualization is created in python using matplotlib and pandas data processing tool, then exported to html using mpld3 package. A websocket server is required to receive client request and send back plot in html/javascript."
+    },
+    {
+        "age": 3,
+        "id": "NG-10years",
+        "name": "ng_symbol_datafiles",
+        "category": "Energy",
+        "source": "Yahoo Finance",
+        "snippet": "Visualize U.S. natuaral gas data of recent ten years. This visualization is created using Bokeh, a python plotting and visualization package. A websocket server is required to receive client request and send back plot in html/javascript."
+    },
+    {
+        "age": 4,
+        "id": "Stock-indicator",
+        "name": "stock-tick-indicator",
+        "category": "Finance",
+        "source": "Yahoo Finance",
+        "snippet": "Compare multiple stock history charts, with indicators."
+    }
+]

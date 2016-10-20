@@ -1,0 +1,30 @@
+<div class="viz-header">
+  <a href="#!/album"><i class="glyphicon glyphicon-home"></i> Back to Album List</a>
+  <h3 class="text-center"> {{$ctrl.album.name}}'s Album View </h3>
+</div>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li ng-repeat="view in $ctrl.album.myalbums" class={{view.name}} ng-click="$ctrl.applyNav(view)">
+        <a href="">{{view.name}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="album-images">
+  <figure>
+    <img ng-src="{{$ctrl.mainImage.src}}" class="album"/>
+    <figcaption>{{$ctrl.mainImage.caption}}</figcaption>
+  </figure>
+</div>
+
+<h4>{{$ctrl.showalbum.desc}}</h4>
+
+<ul class="album-thumbs">
+  <li ng-repeat="img in $ctrl.showalbum.images">
+    <img ng-src="{{img.src}}" ng-click="$ctrl.setImage(img)" />
+  </li>
+</ul>
