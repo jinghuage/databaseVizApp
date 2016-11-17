@@ -1,3 +1,22 @@
+body,
+html {
+    width: 100% !important;
+    height: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
 .viz-desc{
   font-size: 24px;
   padding: 10px;
@@ -11,15 +30,51 @@
 .viz-header{
   background-color: #00005e;
   color: #ffffff;
+  padding-top: 20px;
   padding-bottom: 20px;
+  background: url(img/banner-albumview.jpg) no-repeat center center;
+  background-size: cover;
+  text-align: center;
 }
 
-.jumbotron {
+.fullwidth {
+    width: 100%;
+}
+
+.intro-header {
     background-color: #00005e; /* dark blue */
     color: #ffffff;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
     font-family: Montserrat, sans-serif;
+    text-align: center;
+    background: url(img/banner-albumview.jpg) no-repeat center center;
+    background-size: cover;
 }
+.intro-message {
+    position: relative;
+    /*padding-top: 20%;
+    padding-bottom: 20%;*/
+}
+
+.intro-message > h1 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 5em;
+}
+
+.intro-divider {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.intro-message > h3 {
+    /*color: #5e5e5e;*/
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+}
+
 .navbar {
     margin-bottom: 0;
     background-color: #777777;
@@ -101,17 +156,23 @@ use id to boost priority so no !important needed*/
 }
 
 footer {
-    background-color: #5e5e5e; /* dark blue */
-    color: #ffffff;
-    padding: 10px;
+    background-color: #eeeeee; /* dark blue */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*margin: 10px;*/
     font-family: Montserrat, sans-serif;
 }
 
 footer .glyphicon {
     font-size: 20px;
     margin-bottom: 20px;
-    color: #00005e;
+    color: #5e5e5e;
 }
+
+p.copyright {
+    margin: 15px 0 0;
+}
+
 /* View: database list */
 .database {
   list-style: none;
@@ -179,7 +240,7 @@ figure{
 .album-images {
   background-color: white;
   float: left;
-  height: 450px;
+  height: 480px;
   overflow: hidden;
   position: relative;
   width: 450px;

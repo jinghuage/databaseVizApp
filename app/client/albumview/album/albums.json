@@ -1,9 +1,11 @@
 [
-  {"id":"jinghuage", "name": "Jinghua Ge","class":"2015 2016 2017", "snippet":"teach the viz lab"},
-  {"id": "student1", "name": "student1", "class":"2016", "snippet":"project ...."},
-  {"id": "student2", "name": "student2", "class":"2016", "snippet":"project ...."},
-  {"id": "student3", "name": "student3", "class":"2016", "snippet":"project ...."},
-  {"id": "student4", "name": "student4", "class":"2016", "snippet":"project ...."},
-  {"id": "student5", "name": "student5", "class":"2016", "snippet":"project ...."},
-  {"id": "student6", "name": "student6", "class":"2016", "snippet":"project ...."}
+  {"id":"avsl-gallery", "name":"Visualization Service Image Gallery", "snippet":"AVSL visualization image gallery"},
+  {"id":"project-test", "name":"Test Visualization Service Project", "snippet":"Test Project progression: saved images"},
+  {"id":"class-collection", "name": "HNRS 3035 Class Collection","class":"2011-2016", "snippet":"Image collection of HNRS 3035 classes"},
+  {"id": "student1", "name": "student 1", "class":"Current class", "snippet":"project ...."},
+  {"id": "student2", "name": "student 2", "class":"Current class", "snippet":"project ...."},
+  {"id": "student3", "name": "student 3", "class":"Current class", "snippet":"project ...."},
+  {"id": "student4", "name": "student 4", "class":"Current class", "snippet":"project ...."},
+  {"id": "student5", "name": "student 5", "class":"Current class", "snippet":"project ...."},
+  {"id": "student6", "name": "student 6", "class":"Current class", "snippet":"project ...."}
 ]

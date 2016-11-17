@@ -1,0 +1,31 @@
+{
+  "id": "class-collection",
+  "name": "HNRS 3035 Class Collection",
+  "start": 0,
+  "myalbums": [
+    {"name": "2011",
+      "desc": "class 2011 student projects",
+    "images": [
+    {"src":"img/hnrs3035_gallery/2011/dominique.png", "author":"Dominique Gautreau","caption":"Weighted combination of X-ray and Neutron data sets revealing both internal and surface details"},
+    {"src":"img/hnrs3035_gallery/2011/michelle-entheses.png", "author":"Michelle Osborn","caption":"Visualization and analysis of the human shoulder suspensory apparatus"},
+    {"src":"img/hnrs3035_gallery/2011/michelle-entheses-measure.png", "author":"Michelle Osborn","caption":"Visualization and analysis of the human shoulder suspensory apparatus"},
+    {"src":"img/hnrs3035_gallery/2011/michelle-extra-measure.png", "author":"Michelle Osborn","caption":"Visualization and analysis of the human shoulder suspensory apparatus"},
+    {"src":"img/hnrs3035_gallery/2011/brad-connective-tissue.png", "author":"Bradley Wood","caption":"Detecting Myoseptal Tissue in a Lamprey"},
+    {"src":"img/hnrs3035_gallery/2011/brooke-alligator-envelope.png", "author":"Brooke Hopkins","caption":"Illustration of the cranio-cervical envelope in the alligator"},
+    {"src":"img/hnrs3035_gallery/2011/brooke-extra-1.png", "author":"Brooke Hopkins","caption":"Illustration of the cranio-cervical envelope in the alligator"},
+    {"src":"img/hnrs3035_gallery/2011/brooke-extra-2.png", "author":"Brooke Hopkins","caption":"Illustration of the cranio-cervical envelope in the alligator"},
+    {"src":"img/hnrs3035_gallery/2011/cameron-distance-sampling.png", "author":"Cameron Kilchrist","caption":"distance measurement on curves nerves, tendons, muscles, blood vessels, and even many bones are not exactly linear"},
+    {"src":"img/hnrs3035_gallery/2011/caroline-metal-markers.png", "author":"Caroline Blevins","caption":"Use of metal markers in 3D CT scan of cardinal head"},
+    {"src":"img/hnrs3035_gallery/2011/elise-clean-skeleton.png", "author":"Elise Orellana","caption":"Visualization of a clean skeleton of CT scan bird"}
+  ]},
+  {"name": "2012",
+    "desc": "class 2012 student projects",
+  "images": [
+    {"src":"img/hnrs3035_gallery/2012/andrew-hoof.png", "author":"Andrew Galatas","caption":"Illustration of the horse hoof bone segmentation"},
+    {"src":"img/hnrs3035_gallery/2012/boloji-alligator.png", "author":"Mutairu Olatinwo","caption":"Alligator body bone segmentation"},
+    {"src":"img/hnrs3035_gallery/2012/Joshi-foraminifera.png", "author":"Chaitanya Joshi","caption":"Visualization of foraminifera samples (APS 2001)"},
+    {"src":"img/hnrs3035_gallery/2012/kundan-binarystar.png", "author":"Kundan Kadam","caption":"Visualization of a time-varying Merging White Dwarf simulation"},
+    {"src":"img/hnrs3035_gallery/2012/lucy-hydrogen.png", "author":"Lucy Kiruri","caption":"hydrogen storage,"},
+    {"src":"img/hnrs3035_gallery/2012/troy-polymer.png", "author":"Troy Loeffler","caption":"Air bubbles in Polymer blends"}
+]}]
+}

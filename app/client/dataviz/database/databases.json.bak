@@ -26,12 +26,20 @@
         "snippet": "NFL data downloaded from https://github.com/stevehebert/football_data, visualized and animated use D3.js. Choose a set of teams, plot the game, and watch the animation!"
     },
     {
+        "age": 4,
+        "id": "SimpleChat",
+        "name": "SimpleChat",
+        "category": "Websocket Test",
+        "source": "",
+        "snippet": "A simple chat test connected to python or NodeJS websocket server. Note this won't work on avsl.cct.lsu.edu web server. A websocket server must be running on the server side. "
+    },
+    {
         "age": 2,
         "id": "AFL-2011-2014",
         "name": "afl_stats",
         "category": "Sports",
         "source": "http://afltables.com/afl/seas/",
-        "snippet": "Australia Football League (AFL) Game statistics and score progression. This visualization is created by a python plot server and then exported to html/javascript. A websocket server is required for data communication between web client and python server."
+        "snippet": "Australia Football League (AFL) Game statistics and score progression. This visualization is created in python using matplotlib and pandas data processing tool, then exported to html using mpld3 package. A websocket server is required to receive client request and send back plot in html/javascript."
     },
     {
         "age": 3,
@@ -40,5 +48,13 @@
         "category": "Energy",
         "source": "Yahoo Finance",
         "snippet": "Visualize U.S. natuaral gas data of recent ten years. This visualization is created using Bokeh, a python plotting and visualization package. A websocket server is required to receive client request and send back plot in html/javascript."
+    },
+    {
+        "age": 4,
+        "id": "Stock-indicator",
+        "name": "stock-tick-indicator",
+        "category": "Finance",
+        "source": "Yahoo Finance",
+        "snippet": "Compare multiple stock history charts, with indicators."
     }
 ]

@@ -1,0 +1,16 @@
+{
+  "id": "class2012",
+  "name": "HNRS 3035 Class 2012",
+  "start": 0,
+  "myalbums": [
+    {"name": "Projects",
+      "desc": "student projects",
+    "images": [
+      {"src":"img/hnrs3035_gallery/2012/andrew-hoof.png", "author":"Andrew Galatas","caption":"Illustration of the horse hoof bone segmentation"},
+      {"src":"img/hnrs3035_gallery/2012/boloji-alligator.png", "author":"Mutairu Olatinwo","caption":"Alligator body bone segmentation"},
+      {"src":"img/hnrs3035_gallery/2012/Joshi-foraminifera.png", "author":"Chaitanya Joshi","caption":"Visualization of foraminifera samples (APS 2001)"},
+      {"src":"img/hnrs3035_gallery/2012/kundan-binarystar.png", "author":"Kundan Kadam","caption":"Visualization of a time-varying Merging White Dwarf simulation"},
+      {"src":"img/hnrs3035_gallery/2012/lucy-hydrogen.png", "author":"Lucy Kiruri","caption":"hydrogen storage,"},
+      {"src":"img/hnrs3035_gallery/2012/troy-polymer.png", "author":"Troy Loeffler","caption":"Air bubbles in Polymer blends"}
+  ]}]
+}

@@ -2,8 +2,8 @@ angular.
   module('albumList').
   component('albumList', {
     templateUrl: 'album-list/album-list.template.html',
-    controller: ['Restful',
-      function AlbumListController(Restful) {
+    controller: ['Restful','$filter',
+      function AlbumListController(Restful, $filter) {
         var self = this;
 
         //this.phones = Restful.query();
@@ -16,8 +16,18 @@ angular.
 
         //console.log(self.albums);
 
+        self.classYear = ['collection', 'current'];
+        self.galleryCategory = ['Visualization Service', 'Other'];
+
+
         self.orderProp = 'class';
-        self.query = '2016';
+        self.query = '';
+
+        self.applyFilter = function(q){
+          //console.log(q);
+          self.query = q;
+          //var filtered = $filter('filter')(self.albums, q);
+        };
       }
     ]
   });

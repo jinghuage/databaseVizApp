@@ -1,0 +1,31 @@
+{
+  "id": "gallery",
+  "name": "Visualization Service Image Gallery",
+  "start": 0,
+  "myalbums": [
+    {"name": "simulation",
+      "desc": "Scientific simulation data visualization",
+    "images": [
+    {"src":"img/avsl_gallery/simulation/wave.png", "caption":"blackhole gravitational wave visualization","author":"Jinghua Ge, Andrei Hutanu"},
+    {"src":"img/avsl_gallery/simulation/binaryStar.jpg", "caption":"One carbon-based and another gas-based white dwarfs orbit each other. The stars spiral closer and closer together, and finally collide and merge.","author":"Jinghua Ge, Jan Staff"},
+    {"src":"img/avsl_gallery/simulation/db.jpg", "caption":"complex fracture patterns that form during the drying process or when brittle materials are exposed to sudden, extreme temperature changes.","author":"Blaise Bourdin, Jinghua Ge"},
+    {"src":"img/avsl_gallery/simulation/jet.jpg", "caption":"Protostellar Jet from a One Solar Mass Star","author":"Jan Staff, Jinghua Ge"},
+    {"src":"img/avsl_gallery/simulation/multidomain_jet_volren_fieldline.png", "caption":"The density of the expanding jet cloud is visualized by volume rendering with transparency, and the rovolving magnetic field is depicted by animated streamlines computed from the vector field","author":"Jan Staff, Jinghua Ge"},
+    {"src":"img/avsl_gallery/simulation/porousflow-2.png", "caption":"Simulated Flow Through Porous Media","author":"Jinghua Ge, Timothy Thibodeaux, Ryan Al-Marhoun"},
+    {"src":"img/avsl_gallery/simulation/processid.jpeg", "caption":"process id map during parallel computation on a multi-domain large dataset","author":"Jinghua Ge"},
+    {"src":"img/avsl_gallery/simulation/multiiso-video-sync.png", "caption":"Synced video playing of multiple isosurface rendering ","author":"Jinghua Ge. Visualization by Werner Benger"}
+  ]},
+  {
+    "name": "tomography",
+    "desc": "MicroCT tomography data Visualization",
+    "images": [
+      {"src":"img/avsl_gallery/tomography/Basalt-segmentation.png", "caption":"Multiphase mineral segmentation of a basalt volcanic rock","author":"Jinghua Ge"},
+      {"src":"img/avsl_gallery/tomography/bullet.png", "caption":"A high-res 3D scan of a bullet","author":"Jinghua Ge"},
+      {"src":"img/avsl_gallery/tomography/Cardinal.jpg", "caption":"3d Cardinal model pose-matched frame by frame to the image sequence of the singing x-ray video. The animated Cardinal model can be used to study and teach the vocalization mechanism of a songbird.","author":"Amanda Cozic, Caroline Blevins, Dominque Homberger"},
+      {"src":"img/avsl_gallery/tomography/foraminifera.jpg", "caption":"An interferometry/tomography imaging of a tiny foraminifera shell about 5mm in diameter","author":"Jinghua Ge"},
+      {"src":"img/avsl_gallery/tomography/Titanium3DPrintDefect-Combine.jpg", "caption":"Defect in a titanium 3D print object: spatial graph in volume rendering","author":"Jinghua Ge, Adam J Brooks"},
+      {"src":"img/avsl_gallery/tomography/viz-registration.jpg", "caption":"volume registration of two dataset. The two dataset are the same object scanned by different tomography instruments ","author":"Jinghua Ge, Adam J Brooks"},
+      {"src":"img/avsl_gallery/tomography/RockGrainMultiphaseSurfaceAnalysis-2.jpg", "caption":"Multiphase rock grain segmentation and surface rendering","author":"Jinghua Ge, Godfrey Mills"}
+    ]
+  }]
+}

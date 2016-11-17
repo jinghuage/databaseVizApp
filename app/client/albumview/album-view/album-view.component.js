@@ -26,9 +26,11 @@ angular.
         };
 
         self.applyNav = function(view){
-          console.log('applyNav',view);
+          //console.log('applyNav',view);
 
           self.showalbum = view;
+          self.setImage(self.showalbum.images[0]);
+          
           //self.setNavStyle(self.showalbum);
           $(".active").removeClass('active');
           $("." + view.name).addClass('active');

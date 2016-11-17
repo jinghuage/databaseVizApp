@@ -1,6 +1,9 @@
+<a href="#!/album"><i class="glyphicon glyphicon-home"></i> Back to Album List</a>
 <div class="viz-header">
-  <a href="#!/album"><i class="glyphicon glyphicon-home"></i> Back to Album List</a>
-  <h3 class="text-center"> {{$ctrl.album.name}}'s Album View </h3>
+  <div class="intro-message">
+  <h2> {{$ctrl.album.name}}</h2>
+  <h3>Album View</h3>
+  </div>
 </div>
 
 <nav class="navbar navbar-default">
@@ -18,6 +21,7 @@
   <figure>
     <img ng-src="{{$ctrl.mainImage.src}}" class="album"/>
     <figcaption>{{$ctrl.mainImage.caption}}</figcaption>
+    <p>By {{$ctrl.mainImage.author}}</p>
   </figure>
 </div>
 
