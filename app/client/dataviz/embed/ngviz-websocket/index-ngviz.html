@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AFL Stats</title>
+    <title>Natual Gas Visualization</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/ngviz.css" />
 
@@ -36,8 +36,22 @@
 <body>
     <div id="content">
 
+      <h1>U.S. Natual Gas 10 Years</h1>
+      <h3>Connect to websocket server, then choose your plot</h3>
 
+      <div id="connection">
+        <div class="ctrl">
+        <label class="cmd">Websocket Server:</label>
+        <input type="text" class="moretext" id="wsserver" value="ws://localhost:9999/ws">
+        <button id="connect">Connect</button>
+        <button id="disconnect">Disconnect</button>
+        </div>
 
+        <div class="ctrl">
+          <label class="cmd">Message Console:</label>
+          <div class="text_io" id="console"></div>
+        </div>
+      </div>
 
         <div id="figcontrol">
 
@@ -61,26 +75,25 @@
 
             <div class="col-xs-6 ctrl">
               <label for="plotsymbols">Plot Symbol list:</label>
-              <input type="text" class="form-control" id="plotsymbols" value="UNG*1.0, USO*1.0">
+              <input type="text" class="moretext" id="plotsymbols" value="UNG*1.0, USO*1.0">
             </div>
 
             <div class="col-xs-6 ctrl">
               <label for="plotfiles">Plot Data File List:</label>
-              <input class="form-control" id="plotfiles" type="text" value="HenryHub-spotprice*5.0">
+              <input class="moretext" id="plotfiles" type="text" value="HenryHub-spotprice*5.0">
             </div>
 
 
             <div class="ctrl">
                 <label class="cmd">Pick Date Range: </label>
-                <input type="date" id="dailymin" min="2006-01-01" value="2014-09-01">
-                <input type="date" id="dailymax" max="2016-01-01" value="2015-12-01">
+                <input class="date" type="date" id="dailymin" min="2006-01-01" value="2014-09-01">
+                <input class="date" type="date" id="dailymax" max="2016-01-01" value="2015-12-01">
                 <button id="plot">Plot Selected </button>
             </div>
 
 
         </div>
 
-        <div class="text_io" id="console"></div>
 
         <div id="figs"></div>
 

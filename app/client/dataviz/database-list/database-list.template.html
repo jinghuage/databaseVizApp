@@ -35,10 +35,13 @@
       <!--Body content-->
 
       <ul class="database">
-        <li ng-repeat="database in $ctrl.databases | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="thumbnail">
+        <li ng-repeat="database in $ctrl.databases | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="">
           <a href="#!/database/{{database.id}}">{{database.name}}</a>
-          <p>{{database.category}}</p>
-          <p>{{database.snippet}}</p>
+          <div class="intro-divider"></div>
+          <p>Category: <span>{{database.category}}</span></p>
+          <p>Source: {{database.source}}</p>
+          <p>Software: {{database.feature}}</p>
+          <p>Description: {{database.snippet}}</p>
         </li>
       </ul>
 

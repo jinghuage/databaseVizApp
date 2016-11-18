@@ -7,22 +7,24 @@
 html,body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 100%;
-  background: #333;
+  background: #fff;
   color: #33383D;
   -webkit-font-smoothing: antialiased;
 }
 
 h1 {
   margin: 0.5rem 0 0.5rem 0;
-  color: #999;
+  color: #333;
+  text-align: center;
 }
 
-h2 {
+h3 {
   margin-top: 0;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #999;
+  color: #333;
+  text-align: center;
 }
 
 p {
@@ -35,52 +37,67 @@ p {
 	width: 800px;
 	text-align: left;
 }
-
+#connection {
+  background: #eee;
+  margin: auto;
+  padding: 20px;
+}
 #figcontrol {
     width: 800px;
     min-height: 60px;
     float: left;
-    background: #fff;
+    background: #aaa;
     margin: auto;
+    padding: 20px;
 }
 
 #figs {
     width: 800px;
     min-height: 800px;
     float: left;
-    background: #eee;
+    background: #fff;
     margin: auto;
 }
 
 .fig {
-	margin: 4px;
-  padding: 4px;
+	margin-top: 10px;
+  padding: 0px;
 }
 
 /* Console */
 .text_io {
-        width: 800px;
-        height: 80px;
-        float: left;
-	/* color: #eee; */
-	background: #aaa;
-	/* border-radius: 15px; */
-	overflow-y: scroll;
-	overflow-x: scroll;
+    width: 600px;
+    height: 80px;
+    display: inline-block;
+    background: #fff;
+    /* border-radius: 15px; */
+    overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 .msg {
-	margin: 10px 0px;
-        padding: 0.1rem 1em;
+    margin: 10px 0px;
+    padding: 0.1rem 1em;
 }
+
 .msg i {
-	border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eee;
 }
 
 .ctrl {
   padding-left: 0px;
+  padding-top: 4px;
 }
-
+.date {
+  padding: 0px;
+  width: 150px;
+  height: 30px;
+}
+.moretext {
+  padding: 0px;
+  width: 350px;
+  height: 30px;
+}
 .cmd {
     display: inline-block;
     /*width: 200px;*/

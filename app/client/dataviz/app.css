@@ -17,6 +17,7 @@ h6 {
     font-weight: 700;
 }
 
+
 .viz-desc{
   font-size: 24px;
   padding: 10px;
@@ -63,6 +64,7 @@ h6 {
     width: 400px;
     border-top: 1px solid #f8f8f8;
     border-bottom: 1px solid rgba(0,0,0,0.2);
+    margin-bottom: 10px;
 }
 
 .intro-message > h3 {
@@ -169,9 +171,21 @@ footer .glyphicon {
 
 .database li {
   clear: both;
-  height: 115px;
+  height: 200px;
   padding-top: 15px;
 }
+
+.database li p {
+  padding: 0;
+  margin-right: 20px;
+  font-weight: 500;
+}
+
+.database li a {
+  font-weight: bold;
+  font-size: 16pt;
+}
+
 
 iframe {
   margin: 0;

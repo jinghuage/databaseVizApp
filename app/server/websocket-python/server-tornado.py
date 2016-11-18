@@ -62,7 +62,7 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
 
         req = json.loads(message)
         #print req
-        if req['server-app'] == 'echo':
+        if req['server-app'] == 'echo' or req['message'] == 'disconnect':
             self.write_message('you sent:' + req['message'])
         else:
             #async dispatch function, take a callback (handle_result)
@@ -71,7 +71,7 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
             self.write_message(result)
 
 
-
+    # this is for broadcasting a message to all clients (I think)
     @classmethod
     def dispatch_message(cls, message):
         #print "Processing ... %s" % message
@@ -86,11 +86,11 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
     #http://stackoverflow.com/questions/24800436/under-tornado-v4-websocket-connections-get-refused-with-403
     #http://stackoverflow.com/questions/24851207/tornado-403-get-warning-when-opening-websocket
     def check_origin(self, origin):
-        #return True
-        #return bool(re.match(r'^.*?\.mydomain\.com', origin))
-        import re
-        print origin
-        return bool(re.match(r'^.*?localhost', origin))
+        return True
+        # #return bool(re.match(r'^.*?\.mydomain\.com', origin))
+        # import re
+        # print origin
+        # return bool(re.match(r'^.*?localhost', origin))
 
 application = tornado.web.Application([
     (r"/ws", WebSocketHandler),

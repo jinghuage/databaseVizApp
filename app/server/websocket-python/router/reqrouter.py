@@ -14,12 +14,6 @@
 
 # finally, server will send the html to client
 
-# So, how to implement?
-# check things like:
-# Tornado event handling, python 2.7 async programming
-# url routing
-# routing config file?
-
 
 
 import multiprocessing as mp
@@ -49,7 +43,7 @@ class reqRouter:
 
     def dispatch_async(self, request, callback):
         # this need to be implemented as async call
-        # use multiprocessing poool.apply_async()
+        # use multiprocessing pool.apply_async()
         # http://stackoverflow.com/questions/8533318/python-multiprocessing-pool-when-to-use-apply-apply-async-or-map
         route = request['server-app']
         parameters = request['message']

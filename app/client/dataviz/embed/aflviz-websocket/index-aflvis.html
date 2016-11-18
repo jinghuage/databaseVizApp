@@ -21,29 +21,41 @@
     <div id="content">
 
       <h1>Australia Football League (AFL) Game statistics visualization</h1>
+      <h3>Connect to websocket server, then choose your plot</h3>
 
+      <div id="connection">
+        <div>
+        <label>Websocket Server:</label>
+        <textarea id="wsserver" cols="50">ws://localhost:9999/ws</textarea>
+        <button id="connect">Connect</button>
+        <button id="disconnect">Disconnect</button>
+        </div>
+
+        <div>
+          <label>Message Console:</label>
+          <div class="text_io" id="console"></div>
+        </div>
+      </div>
 
       <div id="figcontrol">
-        <label>Year</label>
+        <label>Plot Year</label>
         <select id="year"></select>
         <button id="summary">Plot Year Summary</button>
         <button id="plotgame-all">Plot All Team Performance</button>
 
         <br>
-        <label> Round: </label>
+        <label> Plot Round: </label>
         <select id="round"></select>
         <button id="plotgame-round">Plot Games by Round</button>
         <button id="plotgame-final">Plot Final Games</button>
         <br>
 
-        <label> team: </label>
+        <label> Plot Team: </label>
         <select id="team"></select>
         <button id="plotgame-team1">Plot Games as Team1</button>
         <button id="plotgame-team2">Plot Games as Team2</button>
         <br>
       </div>
-
-      <div class="text_io" id="console"></div>
 
       <div id="figs"></div>
 

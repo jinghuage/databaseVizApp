@@ -39,11 +39,26 @@ $( document ).ready(function() {
     // load the saved serverURI into the serveruri input
     //var server = localStorage.getItem(KEY_SERVER_URI);
 
+    var Socket;
+    $("#connect").click(function(e) {
+        //var server = "ws://localhost:9999/ws";
+        var server = $("#wsserver").val();
+        console.log(server);
 
-    var server = "ws://localhost:9999/ws";
-    console.log(server);
+        Socket = new WebSocketClient(server, Handler);
+    });
 
-    var Socket = new WebSocketClient(server, Handler);
+
+    $("#disconnect").click(function(e) {
+        var message = {
+          'server-app':'any',
+          'message':'disconnect'
+        };
+        Socket.send(JSON.stringify(message));
+
+        setTimeout(function(){Socket.disconnect()}, 1000);
+    });
+
 
     $("#summary").click(function(e) {
         var year = years[$("#year").val()];

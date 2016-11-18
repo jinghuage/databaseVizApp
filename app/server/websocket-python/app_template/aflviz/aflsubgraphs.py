@@ -90,7 +90,7 @@ def plot_data(df, subcolumn=3):
 
     graphtogether = False
 
-    fig = plt.figure(figsize=(12,12))
+    fig = plt.figure(figsize=(10,10))
     #ax = fig.add_subplot(2,1,1) # two rows, one column, first plot
     axes = fig.add_axes([0.15, 0.1, 0.7, 0.7])
 

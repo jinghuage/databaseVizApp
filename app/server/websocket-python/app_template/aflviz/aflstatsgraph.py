@@ -66,10 +66,10 @@ def sort_teamgames(game):
 
 def plot_team(sorted_team, sorted_teamgames):
 
-    fig = plt.figure(figsize=(12, 12))
+    fig = plt.figure(figsize=(10, 10))
     #ax = fig.add_axes([0.15, 0.1, 0.7, 0.7])
     grid = ImageGrid(fig,
-                     (0.2, 0.15, 0.8, 0.8),
+                     (0.1, 0.15, 0.8, 0.8),
                      #111,
                      nrows_ncols=(1, 1),
                      direction='row', axes_pad=0.05, add_all=True,
@@ -111,7 +111,7 @@ def plot_summary(game):
     x = game.team1score
     y = game.team2score
 
-    fig, axScatter = plt.subplots(figsize=(12, 12), subplot_kw=dict(axisbg='#EEEEEE'))
+    fig, axScatter = plt.subplots(figsize=(10, 10), subplot_kw=dict(axisbg='#EEEEEE'))
 
     # the scatter plot:
     size = x + y

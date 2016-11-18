@@ -58,7 +58,7 @@ class graph:
         self.timerange = []
         self.symbols = {}
         self.datafiles = {}
-        print "module graph initialized"
+        print "ngviz: module graph initialized"
 
 
     def update_config(self, **kwargs):
@@ -185,7 +185,7 @@ class graph:
 
         # create a new plot with a a datetime axis type
         TOOLS="crosshair,pan,wheel_zoom,box_zoom,reset,hover,previewsave"
-        p = figure(width=800, height=350, x_axis_type="datetime", tools=TOOLS)
+        p = figure(width=800, height=600, x_axis_type="datetime", tools=TOOLS)
 
         start = self.timerange[0]
         end = self.timerange[1]
@@ -195,7 +195,9 @@ class graph:
 
         numberColors = 9
         #colors = brewer["Spectral"][numberColors]
-        colors = Spectral11[0:numberColors]
+        #colors = Spectral11[0:numberColors]
+        colors = ["blue", "indigo", "magenta", "red", "brown", "chocolate","darkcyan", "darkgreen", "gray"]
+        rn=0
 
         for s,m in self.symbols.items():
             sdata = self.alldata[s][start:end]
@@ -212,9 +214,10 @@ class graph:
                 AdjData=sdata['Adj Close'] * float(m),
             ))
             #create a random number between 0 to 16
-            rn =randint(0,numberColors-1)
+            #rn =randint(0,numberColors-1)
             p.line('Date', 'AdjData',
                 source=source, color=colors[rn],legend=s+"*"+str(m))
+            rn = rn+1
 
         for d,m in self.datafiles.items():
             ddata = self.alldata[d][start:end]
@@ -233,8 +236,9 @@ class graph:
                 Data=ddata[dd],
                 AdjData=ddata[dd] * float(m),
             ))
-            rn = randint(0,numberColors-1)
+            #rn = randint(0,numberColors-1)
             p.line('Date', 'AdjData', source=source, color=colors[rn],legend=d+"*"+str(m))
+            rn = rn+1
 
         # NEW: customize by setting attributes
         p.title = "NG Spot and UNG tick Price"
@@ -242,8 +246,8 @@ class graph:
         p.grid.grid_line_alpha=0
         p.xaxis.axis_label = 'Date'
         p.yaxis.axis_label = 'Price($)'
-        p.ygrid.band_fill_color="olive"
-        p.ygrid.band_fill_alpha = 0.1
+        #p.ygrid.band_fill_color="olive"
+        #p.ygrid.band_fill_alpha = 0.1
 
         #hover = p.select_one(HoverTool).tooltips = [
         #    ("Date", "@DateLabel"),
@@ -253,12 +257,12 @@ class graph:
         p.select_one(HoverTool).tooltips =         """
                 <div>
                     <div>
-                        <span style="font-size: 17px; font-weight: bold;">Date:</span>
-                        <span style="font-size: 15px; color: #966;">@DateLabel</span>
+                        <span style="font-size: 17px;">Date:</span>
+                        <span style="font-size: 17px;">@DateLabel</span>
                     </div>
                     <div>
-                        <span style="font-size: 15px;">Price:</span>
-                        <span style="font-size: 10px; color: #696;">@Data</span>
+                        <span style="font-size: 17px;">Price:</span>
+                        <span style="font-size: 17px;">@Data</span>
                     </div>
                 </div>
                 """

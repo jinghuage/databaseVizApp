@@ -2,43 +2,53 @@
     {
         "age": 0,
         "id": "GP41-Genbank-original",
-        "name": "ALL_GP41_FINAL_Genbank",
+        "name": "GP41 sequence in HIV type 1",
+        "datafile": "ALL_GP41_FINAL_Genbank.csv",
         "category": "BioInformatics",
         "source": "NIH",
-        "snippet": "Tableau visualization of database gp41 sequence in HIV type 1 all subtypes. Use Tableau Javascript API to interact with viz served at Tableau public server",
+        "feature":"Tableau Public Server and Javascript API",
+        "snippet": "Standard Tableau charts: Bar chart, Bubble chart, etc.",
         "keywords": ["HIV","gene",""]
     },
     {
         "age": 0,
         "id": "GP41-Genbank-500samples-seqsplit",
-        "name": "ALL_GP41_FINAL_Genbank_500samples_SequenceSplit",
+        "name": "500 samples of GP41 sequence in HIV type 1",
+        "datafile": "ALL_GP41_FINAL_Genbank_500samples_SequenceSplit.csv",
         "category": "BioInformatics",
         "source": "NIH",
+        "feature":"Tableau Public Server and Javascript API",
         "snippet": "Enhanced version of the original Tableau viz app. Provide color coded sequence view, and sequence statistics view. ",
         "keywords": ["HIV","gene",""]
     },
     {
         "age": 1,
         "id": "NFL-2012",
-        "name": "2012_nfl_pbp_data",
+        "name": "NFL 2012 game play ",
+        "datafile": "2012_nfl_pbp_data.csv",
         "category": "Sports",
         "source": "https://github.com/stevehebert/football_data",
-        "snippet": "NFL data downloaded from https://github.com/stevehebert/football_data, visualized and animated use D3.js. Choose a set of teams, plot the game, and watch the animation!"
+        "feature":"D3.js",
+        "snippet": "NFL game progression visualized and animated use D3.js. Choose a set of teams, plot the game, and watch the animation!"
     },
     {
         "age": 2,
         "id": "AFL-2011-2014",
-        "name": "afl_stats",
+        "name": "AFL game play 2011 to 2014",
+        "datafile": "afl_stats.csv",
         "category": "Sports",
         "source": "http://afltables.com/afl/seas/",
-        "snippet": "Australia Football League (AFL) Game statistics and score progression. This visualization is created by a python plot server and then exported to html/javascript. A websocket server is required for data communication between web client and python server."
+        "feature":"Python plot server with matplotlib and mpld3, Tornado Websocket server",
+        "snippet": "Australia Football League (AFL) Game statistics, performance, and game-by-game score progression. "
     },
     {
         "age": 3,
         "id": "NG-10years",
-        "name": "ng_symbol_datafiles",
+        "name": "U.S. Natual gas and related data",
+        "datafile": "stock symbol data online retrieval from yahoo finance database and eia.gov",
         "category": "Energy",
-        "source": "Yahoo Finance",
-        "snippet": "Visualize U.S. natuaral gas data of recent ten years. This visualization is created using Bokeh, a python plotting and visualization package. A websocket server is required to receive client request and send back plot in html/javascript."
+        "source": "Yahoo Finance, eia.gov",
+        "feature":"Python plot server with Bokeh, Tornado Websocket server",
+        "snippet": "Visualize U.S. natuaral gas and related energy data of recent ten years."
     }
 ]

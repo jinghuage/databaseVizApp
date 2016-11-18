@@ -123,10 +123,25 @@ $( document ).ready(function() {
     //var server = localStorage.getItem(KEY_SERVER_URI);
 
 
-    var server = "ws://localhost:9999/ws";
-    console.log(server);
+    var Socket;
+    $("#connect").click(function(e) {
+        //var server = "ws://localhost:9999/ws";
+        var server = $("#wsserver").val();
+        console.log(server);
 
-    var Socket = new WebSocketClient(server, Handler);
+        Socket = new WebSocketClient(server, Handler);
+    });
+
+
+    $("#disconnect").click(function(e) {
+        var message = {
+          'server-app':'any',
+          'message':'disconnect'
+        };
+        Socket.send(JSON.stringify(message));
+
+        setTimeout(function(){Socket.disconnect()}, 1000);
+    });
 
     $("#plot").click(function(e) {
 

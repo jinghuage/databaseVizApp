@@ -2,6 +2,7 @@
 
 from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 
+# this is a group chat handler - messages are broadcasted to all clients
 clients = []
 class SimpleChat(WebSocket):
 

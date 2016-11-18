@@ -7,22 +7,25 @@
 html,body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 100%;
-  background: #333;
+  background: #fff;
   color: #33383D;
   -webkit-font-smoothing: antialiased;
 }
 
 h1 {
   margin: 0.5rem 0 0.5rem 0;
-  color: #999;
+  color: #333;
+  text-align: center;
+  padding: 20px;
 }
 
-h2 {
+h3 {
   margin-top: 0;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #999;
+  color: #333;
+  text-align: center;
 }
 
 p {
@@ -42,13 +45,19 @@ p {
     float: left;
     background: #aaa;
     margin: auto;
+    padding: 20px;
 }
 
+#connection {
+  background: #eee;
+  margin: auto;
+  padding: 20px;
+}
 #figs {
     width: 800px;
     min-height: 800px;
     float: left;
-    background: #eee;
+    background: #fff;
     margin: auto;
 }
 
@@ -59,19 +68,19 @@ p {
 
 /* Console */
 .text_io {
-        width: 800px;
-        height: 80px;
-        float: left;
-	/* color: #eee; */
-	background: #aaa;
-	/* border-radius: 15px; */
-	overflow-y: scroll;
-	overflow-x: scroll;
+    width: 600px;
+    height: 80px;
+    /*float: left;*/
+    display: inline-block;
+    /* color: #eee; */
+    background: #fff;
+    /* border-radius: 15px; */
+    overflow-y: scroll;
+    overflow-x: scroll;
 }
-
 .msg {
 	margin: 10px 0px;
-        padding: 0.1rem 1em;
+  padding: 0.1rem 1em;
 }
 .msg i {
 	border-bottom: 1px solid #eee;
@@ -85,4 +94,9 @@ label {
     font-size: 0.9rem;
     /*margin: 0 0.25rem;*/
     /*text-align: center;*/
+}
+
+textarea {
+    width: 220px;
+    height: 30px;
 }
